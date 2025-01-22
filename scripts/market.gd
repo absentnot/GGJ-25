@@ -14,8 +14,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func updatePrice(sharesBought: int, sharesSold: int, numCrabs: int) -> void:
+func updatePrice(sharesBought: int, sharesSold: int, numCrabs: int, ) -> void:
 	pass
+
+# Called by extending classes to set price.
+func _setPrice(newPrice: int) -> void:
+	currentPrice = newPrice
 	
 func getCurrentPrice() -> int:
 	return currentPrice
