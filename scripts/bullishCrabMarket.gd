@@ -4,6 +4,7 @@ var preDeterminedPrices: Array[int] = [50, 60, 70, 80, 90, 100]
 var day = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	day = 0
 	_setPrice(preDeterminedPrices[0])
 
 
@@ -14,4 +15,5 @@ func _process(delta: float) -> void:
 func updatePrice(sharesBought: int, sharesSold: int, numCrabs: int) -> void:
 	day +=1
 	if(day>preDeterminedPrices.size() - 1):
+		previousPrices.push_back(currentPrice)
 		_setPrice(preDeterminedPrices[day])
