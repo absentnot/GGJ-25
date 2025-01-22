@@ -1,5 +1,4 @@
 extends Market
-const Order = preload("res://scripts/order.gd")
 #Amount for price to be multiplied or divided by if it moves.
 var priceSwingAmount = 1.5
 # Called when the node enters the scene tree for the first time.
