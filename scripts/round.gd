@@ -11,12 +11,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func getMarketValue() -> int:
+	return $SineMarket.getCurrentPrice()
+
 func processDay() -> void:
 	day += 1
 	print("Day in round: " + str(day))
 	if(day > maxDays):
 		roundOver.emit()
-		return
-	var orders: Array[Order] = []
-	$SineMarket.updatePrice(orders)
-	print($SineMarket.getCurrentPrice())
+	else:
+		var orders: Array[Order] = []
+		$SineMarket.updatePrice(orders)
+	return
