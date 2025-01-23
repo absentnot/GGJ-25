@@ -19,10 +19,6 @@ func _process(delta: float) -> void:
 func updatePrice(orders: Array[Order]) -> void:
 	pass
 
-# Called by extending classes to set price.
-func _setPrice(newPrice: int) -> void:
-	currentPrice = newPrice
-	
 func getCurrentPrice() -> int:
 	return currentPrice
 	

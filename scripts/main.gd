@@ -4,7 +4,9 @@ extends Node2D
 var currentRound = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentRound = load("res://scenes/RoundOne.tscn")
+	currentRound = load("res://scenes/roundOne.tscn").instantiate()
+	add_child(currentRound)
+	$DayTimer.start()
 	pass # Replace with function body.
 
 
@@ -14,6 +16,6 @@ func _process(delta):
 
 
 func _on_day_timer_timeout() -> void:
-	#currentRound.processDay()
+	print("Bing! Next day")
+	currentRound.processDay()
 	$DayTimer.start()
-	pass # Replace with function body.

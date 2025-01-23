@@ -17,5 +17,6 @@ material = SubResource("ShaderMaterial_kqxoh")
 texture = ExtResource("3_fmpya")
 
 [node name="DayTimer" type="Timer" parent="."]
+wait_time = 5.0
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
