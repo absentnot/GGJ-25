@@ -29,4 +29,5 @@ func _on_day_timer_timeout() -> void:
 
 func endRound() -> void:
 	print("Round is over! Uh oh!")
+	$DayTimer.set_paused(true)
 	$DayTimer.stop()

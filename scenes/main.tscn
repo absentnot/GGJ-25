@@ -6,7 +6,6 @@
 script = ExtResource("1_kap36")
 
 [node name="DayTimer" type="Timer" parent="."]
-wait_time = 5.0
 
 [node name="MarketValueDisplay" type="Label" parent="."]
 offset_right = 40.0
