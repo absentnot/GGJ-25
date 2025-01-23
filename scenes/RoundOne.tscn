@@ -6,5 +6,6 @@
 [node name="RoundOne" type="Node2D"]
 script = ExtResource("1_8ki2c")
 
-[node name="SineMarket" type="Node2D" parent="."]
+[node name="SineMarket" type="Node2D" parent="." groups=["MarketGroup"]]
+visible = false
 script = ExtResource("2_mkie1")
