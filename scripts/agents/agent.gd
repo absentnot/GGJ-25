@@ -1,28 +1,18 @@
 extends Node
 
-class_name Market
+class_name Agent
 const Order = preload("res://scripts/order.gd")
 
-
-var currentPrice: int = 100
-var previousPrices: Array[int] = []
-
+var currentShares: int = 0
+var currentCapital: int = 100
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_to_group("MarketGroup")
+	add_to_group("AgentGroup")
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func updatePrice(orders: Array[Order]) -> void:
-	pass
-
-func getCurrentPrice() -> int:
-	return currentPrice
-	
-func getPreviousPrices() -> Array[int]:
-	return previousPrices
-	
+func decide(prices: Array[int], daysRemaining: int) -> Order:
+	return Order.new(0)
