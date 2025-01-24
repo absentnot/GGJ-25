@@ -74,6 +74,20 @@ grow_vertical = 2
 size_flags_horizontal = 4
 placeholder_text = "Quantity"
 
+[node name="PlayerCashDisplay" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cash: 100"
+
+[node name="PlayerSharesDisplay" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Shares: 0"
+
 [connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="Hold" to="." method="_on_hold_pressed"]

@@ -1,7 +1,6 @@
 extends Node
 
 class_name Agent
-const Order = preload("res://scripts/order.gd")
 
 var currentShares: int = 0
 var currentCapital: int = 100

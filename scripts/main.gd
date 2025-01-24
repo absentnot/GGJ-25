@@ -2,13 +2,11 @@ extends Node2D
 
 
 var currentRound = null
-var marketValue
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentRound = load("res://scenes/roundThree.tscn").instantiate()
 	currentRound.roundOver.connect(endRound)
 	add_child(currentRound)
-	marketValue = currentRound.getMarketValue()
 	$DayTimer.start()
 
 
