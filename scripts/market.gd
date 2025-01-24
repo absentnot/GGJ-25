@@ -1,8 +1,6 @@
 extends Node
 
 class_name Market
-const Order = preload("res://scripts/order.gd")
-
 
 var currentPrice: int = 100
 var previousPrices: Array[int] = []

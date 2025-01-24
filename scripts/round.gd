@@ -18,13 +18,14 @@ func _process(delta: float) -> void:
 func getMarketValue() -> int:
 	return market.getCurrentPrice()
 
-func processDay() -> void:
+func processDay(playerOrder: Order) -> void:
 	day += 1
 	print("Day in round: " + str(day))
 	if(day > maxDays):
 		roundOver.emit()
 	else:
 		var orders: Array[Order] = getOrders()
+		orders.push_back(playerOrder)
 		print("Orders: " + str(orders))
 		market.updatePrice(orders)
 	return
