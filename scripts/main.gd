@@ -9,11 +9,9 @@ func _ready():
 	add_child(currentRound)
 	$DayTimer.start()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
 
 func _on_day_timer_timeout() -> void:
 	print("Bing! Next day")

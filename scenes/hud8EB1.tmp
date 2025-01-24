@@ -89,8 +89,10 @@ offset_bottom = 23.0
 grow_horizontal = 0
 text = "Shares: 0"
 
-[node name="Graph" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("2_jefl5")
+dotRadius = null
+lineWidth = null
 
 [connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]

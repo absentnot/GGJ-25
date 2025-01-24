@@ -19,9 +19,9 @@ func getPlayerOrder() -> Order:
 func setMarketValue(newVal: int) -> void:
 	marketVal = newVal
 	$MarketValueDisplay.text = str(marketVal)
+	$Graph.addPoint(newVal)
 	
 func _updateCashAndShares(nextOrder: Order) -> void:
-	print("Updating cash and shares")
 	match nextOrder.type:
 		Order.OrderType.SELL:
 			currentShares -= orderQuantity
@@ -30,7 +30,6 @@ func _updateCashAndShares(nextOrder: Order) -> void:
 			currentShares += orderQuantity
 			currentMoney -= (orderQuantity * marketVal)
 		Order.OrderType.HOLD:
-			print("I have received a hold order , weird")
 			pass
 	$PlayerCashDisplay.text = str(currentMoney) + " $UDS"
 	$PlayerSharesDisplay.text = str(currentShares) + " Shares"
