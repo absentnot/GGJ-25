@@ -9,10 +9,7 @@ func _ready():
 	currentRound.roundOver.connect(endRound)
 	add_child(currentRound)
 	marketValue = currentRound.getMarketValue()
-	$MarketValueDisplay.text = str(marketValue)
-	$MarketValueDisplay.show()
 	$DayTimer.start()
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,9 +19,9 @@ func _process(delta):
 
 func _on_day_timer_timeout() -> void:
 	print("Bing! Next day")
-	currentRound.processDay()
-	marketValue = currentRound.getMarketValue()
-	$MarketValueDisplay.text = str(marketValue)
+	var order = $HUD.getPlayerOrder()
+	currentRound.processDay(order)
+	$HUD.setMarketValue(currentRound.getMarketValue())
 	$DayTimer.start()
 
 func endRound() -> void:

@@ -6,10 +6,10 @@ enum OrderType {
 }
 
 var type = OrderType.HOLD
-var quantity = 0
+var qty = 0
 func _init(quantity, oType=OrderType.HOLD):
-	quantity = quantity
+	qty = quantity
 	type = oType
 	
 func _to_string():
-	return "%s: %d" % [OrderType.keys()[type], quantity]
+	return "%s: %s" % [OrderType.keys()[type], qty]
