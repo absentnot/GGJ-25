@@ -1,94 +1,100 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnhtjauuofwrl"]
+[gd_scene load_steps=4 format=3 uid="uid://cnhtjauuofwrl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
+[ext_resource type="Script" path="res://scripts/priceDisplay.gd" id="2_jefl5"]
+[ext_resource type="PackedScene" uid="uid://ceeejvvqmk1n0" path="res://scenes/orderVisualizer.tscn" id="3_inugl"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
 
-[node name="MarketValueDisplay" type="Label" parent="."]
-anchors_preset = 5
+[node name="PlayerActionsHBox" type="HBoxContainer" parent="."]
+anchors_preset = 7
 anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Buy" type="Button" parent="."]
-anchors_preset = 2
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -31.0
-offset_right = 40.0
+offset_left = -62.5
+offset_top = -101.0
+offset_right = 62.5
+grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="PlayerActionsVBox" type="VBoxContainer" parent="PlayerActionsHBox"]
+layout_mode = 2
+
+[node name="Buy" type="Button" parent="PlayerActionsHBox/PlayerActionsVBox"]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 text = "BUY
 "
 
-[node name="Sell" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -22.0
-offset_top = -31.0
-offset_right = 22.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Sell" type="Button" parent="PlayerActionsHBox/PlayerActionsVBox"]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 focus_mode = 0
 text = "SELL"
 
-[node name="Hold" type="Button" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="Hold" type="Button" parent="PlayerActionsHBox/PlayerActionsVBox"]
+layout_mode = 2
 focus_mode = 0
 text = "HOLD"
 
-[node name="QuantityInput" type="LineEdit" parent="."]
-custom_minimum_size = Vector2(150, 150)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -75.0
-offset_right = 75.0
-offset_bottom = 75.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="QuantityInput" type="LineEdit" parent="PlayerActionsHBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 size_flags_horizontal = 4
-placeholder_text = "Quantity"
+placeholder_text = "Amt"
 
-[node name="PlayerCashDisplay" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Cash: 100"
+[node name="OrderVisualizer" parent="PlayerActionsHBox" instance=ExtResource("3_inugl")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="PlayerSharesDisplay" type="Label" parent="."]
+[node name="PlayerStats" type="VBoxContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -74.0
+offset_bottom = 50.0
 grow_horizontal = 0
+
+[node name="PlayerCashDisplay" type="Label" parent="PlayerStats"]
+layout_mode = 2
+text = "Cash: 100"
+
+[node name="PlayerSharesDisplay" type="Label" parent="PlayerStats"]
+layout_mode = 2
 text = "Shares: 0"
 
-[connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
-[connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]
-[connection signal="pressed" from="Hold" to="." method="_on_hold_pressed"]
-[connection signal="text_submitted" from="QuantityInput" to="." method="_on_quantity_input_text_submitted"]
+[node name="MarketVbox" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -351.0
+offset_right = 378.0
+offset_bottom = 47.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarketValueDisplay" type="Label" parent="MarketVbox"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Market Value
+"
+
+[node name="Graph" type="Control" parent="MarketVbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("2_jefl5")
+
+[connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Hold" to="." method="_on_hold_pressed"]
+[connection signal="text_submitted" from="PlayerActionsHBox/QuantityInput" to="." method="_on_quantity_input_text_submitted"]
