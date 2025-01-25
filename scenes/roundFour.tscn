@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckph4yid4yec1"]
 
 [ext_resource type="Script" path="res://scripts/round.gd" id="1_qrgtn"]
-[ext_resource type="Script" path="res://scripts/peerPressureMarket.gd" id="2_bchnv"]
+[ext_resource type="Script" path="res://scripts/markets/peerPressureMarket.gd" id="2_bchnv"]
 [ext_resource type="Script" path="res://scripts/agents/snowcrabAgent.gd" id="3_xkdek"]
 
 [node name="RoundFour" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bx6t3o22oroh"]
 
-[ext_resource type="Script" path="res://scripts/bullishCrabMarket.gd" id="1_skeiq"]
+[ext_resource type="Script" path="res://scripts/markets/bullishCrabMarket.gd" id="1_skeiq"]
 [ext_resource type="Script" path="res://scripts/round.gd" id="1_ursny"]
 [ext_resource type="Script" path="res://scripts/agents/senatorShellstrongAgent.gd" id="2_8sk8o"]
 

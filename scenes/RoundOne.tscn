@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqb3qaatjttea"]
 
 [ext_resource type="Script" path="res://scripts/round.gd" id="1_8ki2c"]
-[ext_resource type="Script" path="res://scripts/sineMarket.gd" id="2_mkie1"]
+[ext_resource type="Script" path="res://scripts/markets/sineMarket.gd" id="2_mkie1"]
 
 [node name="RoundOne" type="Node2D"]
 script = ExtResource("1_8ki2c")
