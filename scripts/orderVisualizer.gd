@@ -1,15 +1,16 @@
-extends Node
+extends TextureRect
+
+class_name OrderVisualizer
+
 
 var hold: Texture = preload("res://assets/hold.png")
 var sell: Texture = preload("res://assets/sell.png")
 var buy: Texture= preload("res://assets/buy.png")
-var sprite: Sprite2D
+var sprite: TextureRect
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sprite = Sprite2D.new()
-	sprite.scale = Vector2(.25, .25)
-	_set_texture_and_refit(hold)
-	add_child(sprite)
+	set_stretch_mode(TextureRect.STRETCH_SCALE)
+	set_expand_mode(TextureRect.EXPAND_FIT_WIDTH)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -18,15 +19,8 @@ func _process(delta: float) -> void:
 func updateOrder(nextOrderType: Order.OrderType) -> void:
 	match nextOrderType:
 		Order.OrderType.SELL:
-			_set_texture_and_refit(sell)
+				set_texture(sell)
 		Order.OrderType.BUY:
-			_set_texture_and_refit(buy)
+				set_texture(buy)
 		Order.OrderType.HOLD:
-			_set_texture_and_refit(hold)
-
-func _set_texture_and_refit(texture) -> void:
-	sprite.texture = texture
-	var size = sprite.texture.get_size()
-	var offset = Vector2(size.x / 2, size.y / 2)
-	sprite.offset = offset
-	#sprite.offset = size/2
+				set_texture(hold)

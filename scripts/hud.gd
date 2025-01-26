@@ -1,6 +1,5 @@
 extends Node
 
-
 var playerOrder: Order.OrderType = Order.OrderType.HOLD
 var orderQuantity: int = 0
 var currentShares: int = 0
@@ -46,6 +45,7 @@ func _process(delta: float) -> void:
 func _setOrderType(nextOrderType: Order.OrderType) -> void:
 	playerOrder = nextOrderType
 	orderVisualizer.updateOrder(nextOrderType)
+	
 	
 func _on_sell_pressed() -> void:
 	print("Sell is pressed!")

@@ -1,22 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnhtjauuofwrl"]
+[gd_scene load_steps=5 format=3 uid="uid://cnhtjauuofwrl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
+[ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_hxlur"]
 [ext_resource type="Script" path="res://scripts/priceDisplay.gd" id="2_jefl5"]
-[ext_resource type="PackedScene" uid="uid://ceeejvvqmk1n0" path="res://scenes/orderVisualizer.tscn" id="3_inugl"]
+[ext_resource type="Texture2D" uid="uid://dqgeq3quoxin" path="res://assets/hold.png" id="2_lym6x"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
 
 [node name="PlayerActionsHBox" type="HBoxContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -62.5
-offset_top = -101.0
-offset_right = 62.5
-grow_horizontal = 2
+offset_left = -302.0
+offset_top = -118.0
+offset_right = -173.0
+offset_bottom = -17.0
+grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 
@@ -49,10 +51,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 placeholder_text = "Amt"
 
-[node name="OrderVisualizer" parent="PlayerActionsHBox" instance=ExtResource("3_inugl")]
+[node name="OrderVisualizer" type="TextureRect" parent="PlayerActionsHBox"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+texture = ExtResource("2_lym6x")
+expand_mode = 2
+script = ExtResource("2_hxlur")
 
 [node name="PlayerStats" type="VBoxContainer" parent="."]
 anchors_preset = 1

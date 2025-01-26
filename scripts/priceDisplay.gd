@@ -1,8 +1,10 @@
 extends CanvasItem
 
 var points: Array[Vector2]
+var heightMax = 500
 var maxDays: int = 5
-var maxPrice: int = 200
+var maxPriceSeen: int = 100
+var maxPrice: int = maxPriceSeen * 2
 var minPrice: int = 0
 @export var widthStep: int = 100
 @export var heightStep: int = 50
@@ -28,12 +30,33 @@ func addPoint(newMarketPrice: int) -> void:
 	var numPoints = points.size()
 	if(numPoints > 0):
 		prevPoint = points[numPoints-1]
-	var stepVector = Vector2(widthStep, (newMarketPrice - prevPoint.y))
-	points.push_back(prevPoint + stepVector)
+	# Determine if we need to resize
+	if(newMarketPrice > maxPrice):
+		_resize(newMarketPrice)
+	elif(newMarketPrice > maxPriceSeen):
+		maxPriceSeen = maxPrice
+	# We map from price space into pixel space
+	var heightRatio = float(heightMax)/float(maxPrice)
+	var rescaledY = newMarketPrice * (heightRatio)
+	var newPoint = Vector2(prevPoint.x + widthStep,heightMax - rescaledY)
+	points.push_back(newPoint)
+	var label = Label.new()
+	label.text = str(newMarketPrice)
+	label.set_position(Vector2(prevPoint.x + widthStep,heightMax + 25))
+	add_child(label)
 	queue_redraw()
+
+func _resize(newMarketPrice: int) -> void:
+	var prevMaxPrice = maxPrice
+	var delta = newMarketPrice - maxPrice
+	maxPrice = newMarketPrice * 2
+	maxPriceSeen = newMarketPrice
+	for i in range(points.size()):
+		var originalRatio = -1 * (points[i].y - heightMax)
+		var newRatio = originalRatio * (float(prevMaxPrice) / float(maxPrice))
+		points[i].y = (heightMax - newRatio)
 	
 func _draw():
-	var heightMax = 500
 	var widthMax = maxDays * widthStep
 	draw_line(Vector2(0,heightMax), Vector2(0, 0), black, 8)
 	draw_line(Vector2(0,heightMax), Vector2(widthMax, heightMax), black, 8)
@@ -46,13 +69,16 @@ func _draw():
 	var prevY = 0
 	for i in range(points.size()):
 		var point = points[i]
-		draw_circle(point, dotRadius, black)
+		var thisY = point.y
+		var lineColor = Color.BLUE_VIOLET
+		if(prevY < thisY):
+			lineColor = red
+		if(prevY > thisY):
+			lineColor = green
 		if(i > 0):
-			var thisY = point.y
-			var lineColor = Color.BLUE_VIOLET
-			if(prevY > thisY):
-				lineColor = red
-			if(prevY < thisY):
-				lineColor = green
+			# The logic here is inverted, since points are stored as max - price.
 			draw_line(points[i-1], point, lineColor, lineWidth)
+			draw_circle(point, dotRadius, lineColor)
+		else:
+			draw_circle(point,dotRadius, Color.BLUE_VIOLET)
 		prevY = point.y
