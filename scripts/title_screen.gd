@@ -7,7 +7,7 @@ var master_bus=AudioServer.get_bus_index("Master")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-	var music_stream = load("res://scenes/audio/sfx/atmosphere_loopable.mp3")
+	var music_stream = load("res://assets/sfx/atmosphere_loopable.mp3")
 	music_stream.loop = true
 	background_music.stream = music_stream
 	background_music.play()
