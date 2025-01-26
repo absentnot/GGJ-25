@@ -38,7 +38,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="GameUI/VBoxContainer"]
-z_index = 1
+z_index = 2
 layout_mode = 2
 texture = ExtResource("3_vpesy")
 
@@ -192,6 +192,7 @@ text = "Market Value
 "
 
 [node name="Graph" type="Control" parent="MarketVbox"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

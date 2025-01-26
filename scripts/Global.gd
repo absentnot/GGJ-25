@@ -16,27 +16,28 @@ func getAgentsOrNot():
 	var roundOne = root.get_node("Main").get_node_or_null("RoundOne") if root.get_node_or_null("Main") != null else null
 	if roundOne:
 		if len(roundOne.getAgentTypes()) > 0:
-			return "true"
+			return true
 		else:
-			return "false"
-	return "false"
+			return false
+	return false
 
 func isMoneyZero():
 	var root = get_tree().get_root()
 	var hud =  root.get_node("Main").get_node_or_null("HUD") if root.get_node_or_null("Main") != null else null
 	if hud:
+		print(hud.getCurrentMoney() <  hud.getMarketValue())
 		if hud.getCurrentMoney() < hud.getMarketValue():
-			return "true"
+			return true
 		else:
-			return "false"
-	return "false"
+			return false
+	return false
 
 func isLastDay():
 	var root = get_tree().get_root()
 	var roundOne = root.get_node("Main").get_node_or_null("RoundOne") if root.get_node_or_null("Main") != null else null
 	if roundOne:
 		if roundOne.isLastDay():
-			return "true"
+			return true
 		else:
-			return "false"
-	return "false"
+			return false
+	return false
