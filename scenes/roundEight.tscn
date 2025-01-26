@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://h5vgqrc4v3qp"]
+
+[ext_resource type="Script" path="res://scripts/round.gd" id="1_m8r2r"]
+[ext_resource type="Script" path="res://scripts/markets/peerPressureMarket.gd" id="2_h21f3"]
+
+[node name="RoundEight" type="Node2D"]
+script = ExtResource("1_m8r2r")
+agentTypes = Array[String](["thoth", "shellstrong", "snowcrab", "gretchen"])
+
+[node name="PeerPressureMarket" type="Node2D" parent="." groups=["MarketGroup"]]
+script = ExtResource("2_h21f3")

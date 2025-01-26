@@ -14,7 +14,7 @@ func loadRound():
 		resultScreen.queue_free()
 	print("res://scenes/%s.tscn" % Global.level)
 	currentRound = load("res://scenes/%s.tscn" % Global.level).instantiate()
-	#currentRound = load("res://scenes/roundFour.tscn").instantiate()
+	#currentRound = load("res://scenes/roundEight.tscn").instantiate()
 	currentRound.roundOver.connect(endRound)
 	maxDays = currentRound.getMaxDays()
 	currDay = 0
@@ -74,10 +74,14 @@ func _nextLevel() -> void:
 			Global.level = "roundFour"
 		"roundFour":
 			Global.level = "roundFive"
-		"LASTROUND":
+		"roundFive":
+			Global.level = "roundSix"
+		"roundSix":
+			Global.level = "roundSeven"
+		"roundSeven":
+			Global.level = "roundEight"
+		"_":
 			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-		_:
-			Global.level = "roundOne"
 	loadRound()
 
 

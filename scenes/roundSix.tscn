@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b361xkqgkjx48"]
+
+[ext_resource type="Script" path="res://scripts/round.gd" id="1_g3pys"]
+[ext_resource type="Script" path="res://scripts/markets/loneWolfMarket.gd" id="2_bhmxx"]
+
+[node name="RoundSix" type="Node2D"]
+script = ExtResource("1_g3pys")
+agentTypes = Array[String](["thoth", "shellstrong", "gretchen"])
+
+[node name="LoneWolfMarket" type="Node2D" parent="." groups=["MarketGroup"]]
+script = ExtResource("2_bhmxx")
