@@ -13,7 +13,7 @@ config_version=5
 config/name="GGJ25"
 run/main_scene="res://scenes/TitleScreen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://assets/art/icon.svg"
+config/icon="res://assets/art/gretchen.png"
 
 [autoload]
 
