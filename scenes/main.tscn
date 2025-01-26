@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cnhtjauuofwrl" path="res://scenes/hud.tscn" id="2_kbh8a"]
 
 [node name="Main" type="Node2D"]
-
-[node name="HUD" parent="." instance=ExtResource("2_kbh8a")]
+texture_filter = 1
 
 [node name="DayTimer" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("2_kbh8a")]
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]

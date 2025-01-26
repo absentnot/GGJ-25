@@ -1,0 +1,229 @@
+[gd_scene load_steps=22 format=3 uid="uid://bt0convd558f"]
+
+[ext_resource type="Script" path="res://environment.gd" id="1_twupc"]
+[ext_resource type="Material" uid="uid://cb3rk3i1ls2bw" path="res://shaders/waveMat.tres" id="1_ytdo2"]
+[ext_resource type="Texture2D" uid="uid://dlp6c5a4kwtc4" path="res://assets/art/GAME-BG-bg.png" id="2_5q4pg"]
+[ext_resource type="Texture2D" uid="uid://bep0evl4esev6" path="res://assets/art/GAME-BG-bgrocks.png" id="3_qebtf"]
+[ext_resource type="Texture2D" uid="uid://bffdc3thct40h" path="res://assets/art/GAME-BG-foreground.png" id="4_p1u4a"]
+[ext_resource type="Material" uid="uid://duvef3kdywa2r" path="res://shaders/logo-wobble-mat.tres" id="5_dkt7s"]
+[ext_resource type="Texture2D" uid="uid://buf6q3ke4wbfe" path="res://assets/art/GAME-BG-SEAWEEED3.png" id="6_sroyr"]
+[ext_resource type="Shader" path="res://shaders/wobble.gdshader" id="7_fx665"]
+[ext_resource type="Texture2D" uid="uid://bsixid2qg8nu0" path="res://assets/art/GAME-BG-SEAWEEED2.png" id="8_0wofj"]
+[ext_resource type="Texture2D" uid="uid://b35ak4f1qe8s7" path="res://assets/art/GAME-BG-SEAWEEED1.png" id="9_1wjib"]
+[ext_resource type="Texture2D" uid="uid://4plryku3css1" path="res://assets/art/GAME-BG-FRONT.png" id="10_s0f6l"]
+[ext_resource type="Texture2D" uid="uid://fhbr8mfqn8kw" path="res://assets/art/bubble.png" id="12_wyhgd"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uv8ss"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mw4ro"]
+width = 52
+height = 52
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_uv8ss")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_400iq"]
+shader = ExtResource("7_fx665")
+shader_parameter/strength = 0.006
+shader_parameter/speed = 4.0
+shader_parameter/flowing = true
+shader_parameter/frames = 8
+shader_parameter/flowMap = SubResource("NoiseTexture2D_mw4ro")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmhns"]
+shader = ExtResource("7_fx665")
+shader_parameter/strength = 0.008
+shader_parameter/speed = 5.0
+shader_parameter/flowing = true
+shader_parameter/frames = 8
+shader_parameter/flowMap = SubResource("NoiseTexture2D_mw4ro")
+
+[sub_resource type="Shader" id="Shader_s8j8y"]
+code = "shader_type canvas_item;
+
+uniform sampler2D flowMap; //Displacement map
+uniform float strength;    //Force of the effect
+uniform float speed;       //Speed of the effect
+
+uniform bool flowing;
+
+uniform int frames : hint_range(1, 10); //Frames of the effect
+
+//Returns a value between 0 and 1 depending of the frames -> exemple: frames = 4, frame 1 = 0.25
+float clock(float time){
+	float fframes = float(frames);
+	return floor(mod(time * speed, fframes)) / fframes;
+}
+
+void fragment(){
+	if(flowing){
+		float c = clock(TIME); //Get clock frame
+		vec4 offset = texture(flowMap, vec2(UV.x + c, UV.y + c)) * strength; //Get offset
+		//COLOR = texture(TEXTURE, vec2(UV.x,UV.y) + normal.xy); //Apply offset
+		COLOR = texture(TEXTURE, vec2(UV.x,UV.y) + offset.xy - vec2(0.5,0.5)*strength)* vec4(0.8, 0.8, 1.0, 1.0); //We need to remove the displacement
+	}
+
+}
+
+
+// TEST CLOCK
+/*
+void fragment(){
+	float c = clock(TIME);
+	COLOR = vec4( c, c, c, 1);
+}
+*/"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1sh8l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t15sq"]
+width = 52
+height = 52
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_1sh8l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yw0vy"]
+shader = SubResource("Shader_s8j8y")
+shader_parameter/strength = 0.1
+shader_parameter/speed = 8.0
+shader_parameter/flowing = true
+shader_parameter/frames = 8
+shader_parameter/flowMap = SubResource("NoiseTexture2D_t15sq")
+
+[sub_resource type="Curve" id="Curve_1kf0g"]
+_data = [Vector2(0, 0.296703), 0.0, 0.0, 0, 0, Vector2(1, 0.648352), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Environment" type="Control"]
+z_index = -5
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_twupc")
+
+[node name="BG" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="BG"]
+material = ExtResource("1_ytdo2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("2_5q4pg")
+
+[node name="BGROCKS" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qebtf")
+
+[node name="Foreground" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_p1u4a")
+
+[node name="Seaweed3" type="TextureRect" parent="BG"]
+z_index = 1
+material = ExtResource("5_dkt7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_sroyr")
+
+[node name="Seaweed2" type="TextureRect" parent="BG"]
+z_index = 2
+material = SubResource("ShaderMaterial_400iq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_0wofj")
+
+[node name="Seaweed1" type="TextureRect" parent="BG"]
+z_index = 3
+material = SubResource("ShaderMaterial_rmhns")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_1wjib")
+
+[node name="Front" type="TextureRect" parent="BG"]
+z_index = 4
+material = ExtResource("5_dkt7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_s0f6l")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_yw0vy")
+position = Vector2(182, 476)
+amount = 5
+lifetime = 7.5
+explosiveness = 0.28
+lifetime_randomness = 1.0
+texture = ExtResource("12_wyhgd")
+direction = Vector2(0, -1)
+spread = 21.36
+gravity = Vector2(0, -30)
+initial_velocity_max = 111.11
+scale_amount_curve = SubResource("Curve_1kf0g")
+
+[node name="GPUParticles2D2" type="CPUParticles2D" parent="."]
+z_index = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_yw0vy")
+position = Vector2(831, 482)
+amount = 5
+lifetime = 7.5
+explosiveness = 0.28
+lifetime_randomness = 1.0
+texture = ExtResource("12_wyhgd")
+direction = Vector2(0, -1)
+spread = 21.36
+gravity = Vector2(0, -30)
+initial_velocity_max = 111.11
+scale_amount_curve = SubResource("Curve_1kf0g")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

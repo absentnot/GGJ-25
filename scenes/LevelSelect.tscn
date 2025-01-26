@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ds7fso5n6vhev"]
 
 [ext_resource type="Script" path="res://scripts/LevelSelect.gd" id="1_o6sem"]
-[ext_resource type="Texture2D" uid="uid://b0jlwh15yf8bb" path="res://assets/Titlebackground.png" id="2_w71c2"]
+[ext_resource type="Texture2D" uid="uid://b0jlwh15yf8bb" path="res://assets/art/Titlebackground.png" id="2_w71c2"]
 [ext_resource type="FontFile" uid="uid://codq4x8xbumx0" path="res://assets/AguDisplay-Regular-VariableFont_MORF.ttf" id="3_v2rr7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_je78g"]
