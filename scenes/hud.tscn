@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnhtjauuofwrl"]
+[gd_scene load_steps=11 format=3 uid="uid://cnhtjauuofwrl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
 [ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_hxlur"]
@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bvfc28td2a8f2" path="res://assets/art/HUD-BORDER-FRAME.png" id="3_vpesy"]
 [ext_resource type="PackedScene" uid="uid://f5lgc56hlwoh" path="res://scenes/agentPanel.tscn" id="5_6wdav"]
 [ext_resource type="PackedScene" uid="uid://daplwaiaowq6" path="res://scenes/infoTooltip.tscn" id="7_xl5bw"]
-[ext_resource type="PackedScene" uid="uid://bk1wwxoeojduc" path="res://scenes/player_crab.tscn" id="9_2vhcv"]
+[ext_resource type="AudioStream" uid="uid://cwktd1telb2p" path="res://assets/sfx/wrong.mp3" id="8_bifao"]
+[ext_resource type="PackedScene" path="res://scenes/player_crab.tscn" id="9_2vhcv"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
@@ -234,6 +235,10 @@ offset_bottom = -187.0
 
 [node name="MarketInfoPopup" parent="." instance=ExtResource("7_xl5bw")]
 visible = false
+
+[node name="WrongPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bifao")
+volume_db = -5.0
 
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Sell" to="." method="_on_sell_pressed"]
