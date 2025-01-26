@@ -69,14 +69,16 @@ func _draw():
 	var prevY = 0
 	for i in range(points.size()):
 		var point = points[i]
-		draw_circle(point, dotRadius, black)
+		var thisY = point.y
+		var lineColor = Color.BLUE_VIOLET
+		if(prevY < thisY):
+			lineColor = red
+		if(prevY > thisY):
+			lineColor = green
 		if(i > 0):
-			var thisY = point.y
-			var lineColor = Color.BLUE_VIOLET
 			# The logic here is inverted, since points are stored as max - price.
-			if(prevY < thisY):
-				lineColor = red
-			if(prevY > thisY):
-				lineColor = green
 			draw_line(points[i-1], point, lineColor, lineWidth)
+			draw_circle(point, dotRadius, lineColor)
+		else:
+			draw_circle(point,dotRadius, Color.BLUE_VIOLET)
 		prevY = point.y

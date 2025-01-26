@@ -11,10 +11,10 @@ func _ready() -> void:
 	add_to_group("AgentGroup")
 	var sprite = TextureRect.new()
 	sprite.set_texture(load("res://assets/" + spriteName))
-	sprite.set_stretch_mode(TextureRect.STRETCH_SCALE)
 	sprite.set_expand_mode(TextureRect.EXPAND_FIT_WIDTH)
 	add_child(sprite)
 	orderVisualizer = OrderVisualizer.new()
+	orderVisualizer.updateOrder(Order.OrderType.HOLD)
 	add_child(orderVisualizer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
