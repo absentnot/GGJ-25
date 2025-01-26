@@ -1,8 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceeejvvqmk1n0"]
+[gd_scene load_steps=2 format=3 uid="uid://lmcbnr5i7ifw"]
 
 [ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="1_3dslj"]
 
-[node name="OrderVisualizer" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="OrderVisualizer" type="TextureRect"]
 script = ExtResource("1_3dslj")

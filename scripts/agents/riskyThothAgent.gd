@@ -1,6 +1,6 @@
 extends Agent
 
-func decide(prices: Array[int], daysRemaining: int) -> Order:
+func _next_order(prices: Array[int], daysRemaining: int) -> Order:
 	var numPrices = prices.size()
 	# If today is the first day, we do not buy.
 	if(numPrices < 2):
