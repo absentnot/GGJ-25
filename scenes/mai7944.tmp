@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://kw25mjyh8n23"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_kap36"]
+[ext_resource type="PackedScene" uid="uid://cnhtjauuofwrl" path="res://scenes/hud.tscn" id="2_kbh8a"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_kap36")
+
+[node name="HUD" parent="." instance=ExtResource("2_kbh8a")]
+
+[node name="DayTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]

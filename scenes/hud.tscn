@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
 [ext_resource type="Script" path="res://scripts/priceDisplay.gd" id="2_jefl5"]
-[ext_resource type="PackedScene" uid="uid://ceeejvvqmk1n0" path="res://scenes/orderVisualizer.tscn" id="3_inugl"]
+[ext_resource type="PackedScene" path="res://scenes/orderVisualizer.tscn" id="3_inugl"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
