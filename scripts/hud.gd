@@ -102,9 +102,9 @@ func _on_hold_pressed() -> void:
 	print("Hold is pressed!")
 	_setOrderType(Order.OrderType.HOLD)
 
-func _setOrderQuantity(quantity:int) () -> void:
+func _setOrderQuantity(quantity:int) -> void:
 	orderQuantity = quantity
-	nextOrderDisplay.text = str("orderQuantity")
+	nextOrderDisplay.text = str(orderQuantity)
 	
 func _on_up_pressed() -> void:
 	_setOrderQuantity(orderQuantity + 1)
