@@ -12,7 +12,7 @@ func _ready() -> void:
 	var sprite = TextureRect.new()
 	sprite.set_texture(load("res://assets/" + spriteName))
 	sprite.set_stretch_mode(TextureRect.STRETCH_SCALE)
-	sprite.set_expand_mode(TextureRect.EXPAND_FIT_HEIGHT)
+	sprite.set_expand_mode(TextureRect.EXPAND_FIT_WIDTH)
 	add_child(sprite)
 	orderVisualizer = OrderVisualizer.new()
 	add_child(orderVisualizer)
