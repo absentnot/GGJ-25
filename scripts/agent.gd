@@ -14,7 +14,7 @@ func _ready() -> void:
 	add_child(coolLabel)
 	#var sprite = TextureRect.new()
 	#### TODO: Andrew, I guess make this load the real sprite lol
-	#sprite.set_texture(load("res://assets/art/%s.png" % agentType))
+	$AgentCrab.set_texture(load("res://assets/art/%s-anim.tres" % agentType))
 	#add_child(sprite)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

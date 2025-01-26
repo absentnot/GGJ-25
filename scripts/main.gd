@@ -13,8 +13,8 @@ func loadRound():
 	if(resultScreen != null):
 		resultScreen.queue_free()
 	print("res://scenes/%s.tscn" % Global.level)
-	#currentRound = load("res://scenes/%s.tscn" % Global.level).instantiate()
-	currentRound = load("res://scenes/roundFour.tscn").instantiate()
+	currentRound = load("res://scenes/%s.tscn" % Global.level).instantiate()
+	#currentRound = load("res://scenes/roundFour.tscn").instantiate()
 	currentRound.roundOver.connect(endRound)
 	maxDays = currentRound.getMaxDays()
 	currDay = 0
@@ -44,6 +44,11 @@ func endDay() -> void:
 	currDay+=1
 	$HUD.setMarketValue(currentRound.getPrices(), maxDays- currDay)
 	$DayTimer.start()
+	
+	if Global.isMoneyZero():
+		$HUD/PlayerCrab.nervous()
+	else:
+		$HUD/PlayerCrab.idle()
 
 func endRound() -> void:
 	print("Round is over! Uh oh!")
@@ -68,6 +73,8 @@ func _nextLevel() -> void:
 			Global.level = "roundFour"
 		"roundFour":
 			Global.level = "roundFive"
+		"LASTROUND":
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		_:
 			Global.level = "roundOne"
 	loadRound()

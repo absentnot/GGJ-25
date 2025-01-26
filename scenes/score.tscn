@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bym64clfq2d8g"]
+[gd_scene load_steps=4 format=3 uid="uid://bym64clfq2d8g"]
 
 [ext_resource type="Script" path="res://scripts/score.gd" id="1_6p3vg"]
 [ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_67woj"]
+[ext_resource type="PackedScene" uid="uid://bk1wwxoeojduc" path="res://scenes/player_crab.tscn" id="3_p1cf4"]
 
 [node name="Score" type="CanvasLayer"]
 script = ExtResource("1_6p3vg")
@@ -48,6 +49,12 @@ text = "NEXT"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_67woj")
 text = "RETRY"
+
+[node name="PlayerCrab" parent="." instance=ExtResource("3_p1cf4")]
+offset_left = 28.0
+offset_top = 353.0
+offset_right = -932.0
+offset_bottom = -187.0
 
 [connection signal="pressed" from="VBoxContainer/Buttons/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/NextRound" to="." method="_on_next_round_pressed"]

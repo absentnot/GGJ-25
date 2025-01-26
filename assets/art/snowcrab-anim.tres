@@ -1,0 +1,17 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://cnhwfd63sm816"]
+
+[ext_resource type="Texture2D" uid="uid://smbhrkopeh2x" path="res://assets/art/crabagent-snow-idle1.png" id="1_meare"]
+[ext_resource type="Texture2D" uid="uid://c4l4m5iragy6l" path="res://assets/art/crabagent-snow-idle2.png" id="2_g26gg"]
+[ext_resource type="Texture2D" uid="uid://cvfwewt00ikte" path="res://assets/art/crabagent-snow-idle3.png" id="3_t8nwj"]
+[ext_resource type="Texture2D" uid="uid://dut6bwxxjtv0t" path="res://assets/art/crabagent-snow-idle4.png" id="4_kcalx"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_meare")
+frame_0/duration = 3.0
+frame_1/texture = ExtResource("2_g26gg")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("3_t8nwj")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("4_kcalx")
+frame_3/duration = 0.1
