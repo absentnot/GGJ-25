@@ -1,5 +1,6 @@
 extends Node
 
+signal locked
 var playerOrder: Order.OrderType = Order.OrderType.HOLD
 var orderQuantity: int = 0
 var currentShares: int = 0
@@ -111,3 +112,7 @@ func _on_up_pressed() -> void:
 
 func _on_down_pressed() -> void:
 	_setOrderQuantity(orderQuantity - 1)
+
+
+func _on_lock_pressed() -> void:
+	emit_signal("locked")

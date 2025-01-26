@@ -65,6 +65,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
 text = "DOWN"
 
+[node name="Lock" type="Button" parent="PlayerActionsHBox/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
+text = "Lock!"
+
 [node name="NextOrderDisplay" type="Label" parent="PlayerActionsHBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
@@ -134,3 +139,4 @@ theme_override_constants/separation = 125
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Hold" to="." method="_on_hold_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Up" to="." method="_on_up_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Lock" to="." method="_on_lock_pressed"]
