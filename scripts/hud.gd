@@ -56,7 +56,7 @@ func reset(days:int) -> void:
 	
 func getOrders(prices: Array[int], daysRemaining: int) -> Array[Order]:
 	var agentOrders = $AgentPanelL.getOrders(prices, daysRemaining)
-	agentOrders.push_back($AgentPanelR.getOrders(prices, daysRemaining))
+	agentOrders.append_array($AgentPanelR.getOrders(prices, daysRemaining))
 	
 	agentOrders.push_back(getPlayerOrder())
 	return agentOrders
