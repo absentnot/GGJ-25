@@ -12,6 +12,7 @@ var initialMoney:int = 100
 @onready var playerCashDisplay = get_node("PlayerStats/PlayerCashDisplay")
 @onready var playerSharesDisplay = get_node("PlayerStats/PlayerSharesDisplay")
 @onready var orderVisualizer = get_node("PlayerActionsHBox/OrderVisualizer")
+@onready var quantityInput = get_node("PlayerActionsHBox/QuantityInput")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_updateCashAndShares(Order.new(0))
@@ -66,6 +67,10 @@ func _updateCashAndShares(nextOrder: Order) -> void:
 			pass
 	playerCashDisplay.text = str(currentMoney) + " $UDS"
 	playerSharesDisplay.text = str(currentShares) + " Shares"
+	orderQuantity = 0
+	quantityInput.text = ""
+	_setOrderType(Order.OrderType.HOLD)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -80,13 +85,18 @@ func _on_sell_pressed() -> void:
 	print("Sell is pressed!")
 	if(orderQuantity < 1):
 		print("Stupid player, you can't sell less than 1 share!")
+	elif(orderQuantity > currentShares):
+		print("You don't have that many shares!")
 	else:
 		_setOrderType(Order.OrderType.SELL)
 
 func _on_buy_pressed() -> void:
 	print("Buy is pressed!")
+	var price = orderQuantity * marketVal
 	if(orderQuantity < 1):
 		print("Stupid player, you can't buy less than 1 share!")
+	elif(price > currentMoney):
+		print("You can't afford that!")
 	else:
 		_setOrderType(Order.OrderType.BUY)
 

@@ -9,5 +9,6 @@ script = ExtResource("1_l4ghx")
 [node name="HUD" parent="." instance=ExtResource("2_kbh8a")]
 
 [node name="DayTimer" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
