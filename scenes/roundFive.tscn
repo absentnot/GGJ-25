@@ -11,8 +11,20 @@ script = ExtResource("1_hd3x5")
 [node name="PeerPressureMarket" type="Node2D" parent="." groups=["MarketGroup"]]
 script = ExtResource("2_g0r2a")
 
-[node name="Snowcrab" type="Node2D" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 950.0
+offset_top = 125.0
+offset_right = 1100.0
+offset_bottom = 325.0
+
+[node name="Snowcrab" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 2
 script = ExtResource("3_h8v2j")
 
-[node name="RiskyThoth" type="Node2D" parent="."]
+[node name="RiskyThoth" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 8
 script = ExtResource("4_3nt74")

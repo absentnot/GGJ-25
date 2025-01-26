@@ -4,7 +4,7 @@ extends Node2D
 var currentRound = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentRound = load("res://scenes/roundThree.tscn").instantiate()
+	currentRound = load("res://scenes/roundFive.tscn").instantiate()
 	currentRound.roundOver.connect(endRound)
 	add_child(currentRound)
 	$HUD.setMarketValue(currentRound.getMarketValue())
