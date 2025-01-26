@@ -39,9 +39,11 @@ func handle_actions(actionArray):
 		$song_controller.handle_action(action_to_perform)
 		
 func _on_perform_audio_action(action):
+	print(action)
 	$song_controller.handle_action(action)
 	
 func _on_state_changed(action):
+	print(action)
 	$song_controller.handle_action(action)
 
 func _on_error(err_message):
