@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://ds7fso5n6vhev"]
 
-[ext_resource type="Texture2D" uid="uid://c1ijgkmx77y1h" path="res://Titlebackground.png" id="1_5ni60"]
-[ext_resource type="Script" path="res://LevelSelect.gd" id="1_blde4"]
-[ext_resource type="FontFile" uid="uid://dbqlviebewkia" path="res://AguDisplay-Regular-VariableFont_MORF.ttf" id="2_3j0pf"]
+[ext_resource type="Script" path="res://scripts/LevelSelect.gd" id="1_o6sem"]
+[ext_resource type="Texture2D" uid="uid://b0jlwh15yf8bb" path="res://assets/Titlebackground.png" id="2_w71c2"]
+[ext_resource type="FontFile" uid="uid://codq4x8xbumx0" path="res://assets/AguDisplay-Regular-VariableFont_MORF.ttf" id="3_v2rr7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_je78g"]
-texture = ExtResource("1_5ni60")
+texture = ExtResource("2_w71c2")
 modulate_color = Color(0.847474, 0.847474, 0.847474, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bser5"]
@@ -41,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_blde4")
+script = ExtResource("1_o6sem")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -64,7 +64,7 @@ offset_bottom = 208.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 8
-theme_override_fonts/font = ExtResource("2_3j0pf")
+theme_override_fonts/font = ExtResource("3_v2rr7")
 theme_override_font_sizes/font_size = 85
 text = "Economy Bubble"
 horizontal_alignment = 1

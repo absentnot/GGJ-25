@@ -12,9 +12,6 @@ func _process(delta: float) -> void:
 
 
 
-func _on_exit_pressed() -> void:
-	get_tree().quit()
-
 
 func _on_level1_pressed() -> void:
 	print("Button pressed")
