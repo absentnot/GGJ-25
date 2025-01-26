@@ -86,3 +86,7 @@ func getAgentInfo() -> String:
 		_:
 			info = "You have discovered the rare ghost crab!"
 	return info
+
+
+func _on_mouse_exited():
+	$AgentInfoTooltip.hide()

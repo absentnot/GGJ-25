@@ -13,4 +13,3 @@ func _process(delta: float) -> void:
 	
 func showInfo(info: String) -> void:
 	label.text = info
-	

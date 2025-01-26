@@ -168,8 +168,17 @@ size_flags_vertical = 0
 layout_mode = 2
 
 [node name="MarketName" type="Label" parent="MarketVbox/MarketInfo"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
+theme_override_font_sizes/font_size = 32
+
+[node name="blank" type="Label" parent="MarketVbox/MarketInfo"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
+theme_override_font_sizes/font_size = 32
+text = "   "
 
 [node name="MarketValue" type="Label" parent="MarketVbox/MarketInfo"]
 z_index = 1
@@ -233,3 +242,4 @@ visible = false
 [connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Down" to="." method="_on_down_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/Lock" to="." method="_on_lock_pressed"]
 [connection signal="mouse_entered" from="MarketVbox/MarketInfo" to="." method="_on_market_info_mouse_entered"]
+[connection signal="mouse_exited" from="MarketVbox/MarketInfo" to="." method="_on_market_info_mouse_exited"]
