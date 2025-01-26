@@ -1,16 +1,19 @@
 extends Control
-@onready var background_music = $AudioStreamPlayer
+
 @onready var hslider=$VolumeSlider
 var master_bus=AudioServer.get_bus_index("Master")
 @export var level_scene:PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
 	var music_stream = load("res://assets/sfx/atmosphere_loopable.mp3")
 	music_stream.loop = true
-	background_music.stream = music_stream
-	background_music.play()
+	
+	var sfxManager = get_tree().get_root().get_node_or_null('SFXManager')
+	if sfxManager:
+		$CenterContainer/VBoxContainer/Button.mouse_entered.connect(sfxManager._on_button_hovered)
+		$CenterContainer/VBoxContainer/Button.pressed.connect(sfxManager._on_start_pressed)
+		$CenterContainer/VBoxContainer/Button2.mouse_entered.connect(sfxManager._on_button_hovered)
 
 func _on_start_pressed() -> void:
 	Global.level="roundOne"
