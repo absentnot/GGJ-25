@@ -51,6 +51,7 @@ func endRound() -> void:
 	$HUD.visible = false
 	resultScreen = load("res://scenes/score.tscn").instantiate()
 	resultScreen.nextLevel.connect(_nextLevel)
+	resultScreen.sameLevel.connect(_sameLevel)
 	add_child(resultScreen)
 	resultScreen.display(stats[0], stats[1])
 
@@ -67,4 +68,8 @@ func _nextLevel() -> void:
 			Global.level = "roundFive"
 		_:
 			Global.level = "roundOne"
+	loadRound()
+	
+func _sameLevel() -> void:
+	resultScreen.queue_free()
 	loadRound()
