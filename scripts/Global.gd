@@ -1,5 +1,5 @@
 extends Node
-var level: String
+var level: int = 0
 var gametitle: String ='Bubble Brokers' 
 
 func getCurrentMusicContext():

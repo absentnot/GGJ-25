@@ -16,7 +16,6 @@ func _ready() -> void:
 		$CenterContainer/VBoxContainer/Button2.mouse_entered.connect(sfxManager._on_button_hovered)
 
 func _on_start_pressed() -> void:
-	Global.level="roundOne"
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _on_settings_pressed() -> void:

@@ -2,6 +2,8 @@ extends Node2D
 var parameter: int
 var currentRound = null
 
+@export var levels: Array[PackedScene] = []
+
 var maxDays
 var currDay = 0
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +15,7 @@ func loadRound():
 	if(resultScreen != null):
 		resultScreen.queue_free()
 	print("res://scenes/%s.tscn" % Global.level)
-	currentRound = load("res://scenes/%s.tscn" % Global.level).instantiate()
+	currentRound = levels[Global.level].instantiate()
 	#currentRound = load("res://scenes/roundEight.tscn").instantiate()
 	currentRound.roundOver.connect(endRound)
 	maxDays = currentRound.getMaxDays()
@@ -65,24 +67,12 @@ func endRound() -> void:
 	resultScreen.display(stats[0], stats[1])
 
 func _nextLevel() -> void:
-	match Global.level:
-		"roundOne":
-			Global.level = "roundTwo"
-		"roundTwo":
-			Global.level = "roundThree"
-		"roundThree":
-			Global.level = "roundFour"
-		"roundFour":
-			Global.level = "roundFive"
-		"roundFive":
-			Global.level = "roundSix"
-		"roundSix":
-			Global.level = "roundSeven"
-		"roundSeven":
-			Global.level = "roundEight"
-		"_":
-			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-	loadRound()
+	if Global.level < 8:
+		Global.level += 1
+		loadRound()
+	else:
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	
 
 
 func _on_tutorial_tutorial_end() -> void:
