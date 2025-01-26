@@ -1,7 +1,7 @@
 extends Agent
 
-func decide(prices: Array[int], daysRemaining: int) -> Order:
+func _next_order(prices: Array[int], daysRemaining: int) -> Order:
 	return Order.new(10, Order.OrderType.SELL)
 
 func _init() -> void:
-	super._init("snowcrab.png")
+	spriteName = "snowcrab.png"

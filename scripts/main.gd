@@ -2,52 +2,31 @@ extends Node2D
 var parameter: int
 var currentRound = null
 
-
-
-#var currentRound = null
+var maxDays
+var currDay = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Request for received for level:", Global.level)
+	loadRound()
+	
+func loadRound():
+	currentRound = load(Global.level).instantiate()
+	currentRound.roundOver.connect(endRound)
+	maxDays = currentRound.getMaxDays()
+	add_child(currentRound)
+	$HUD.setAgents(currentRound.getAgentTypes())
+	$HUD.setMarketValue(currentRound.getPrices(), maxDays - currDay)
+	$DayTimer.start()
 
-	
-	print("Launching level ", Global.level)
-	
-	if Global.level == 1:
-		currentRound = load("res://scenes/roundOne.tscn").instantiate()
-		currentRound.roundOver.connect(endRound)
-		add_child(currentRound)
-		$DayTimer.start()	
-	elif Global.level == 2:
-		currentRound = load("res://scenes/roundTwo.tscn").instantiate()
-		currentRound.roundOver.connect(endRound)
-		add_child(currentRound)
-		$DayTimer.start()	
-	elif Global.level == 3:
-		currentRound = load("res://scenes/roundThree.tscn").instantiate()
-		currentRound.roundOver.connect(endRound)
-		add_child(currentRound)
-		$DayTimer.start()	
-	elif Global.level == 4:
-		currentRound = load("res://scenes/roundThree.tscn").instantiate()
-		currentRound.roundOver.connect(endRound)
-		add_child(currentRound)
-		$DayTimer.start()	
-	elif Global.level == 5:
-		currentRound = load("res://scenes/roundFour.tscn").instantiate()
-		currentRound.roundOver.connect(endRound)
-		add_child(currentRound)
-		$DayTimer.start()			
-		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
 func _on_day_timer_timeout() -> void:
 	print("Bing! Next day")
-	var order = $HUD.getPlayerOrder()
-	currentRound.processDay(order)
-	$HUD.setMarketValue(currentRound.getMarketValue())
+	var orders = $HUD.getOrders(currentRound.getPrices(), maxDays - currDay)
+	currentRound.processDay(orders)
+	currDay+=1
+	$HUD.setMarketValue(currentRound.getPrices(), maxDays- currDay)
 	$DayTimer.start()
 
 func endRound() -> void:
