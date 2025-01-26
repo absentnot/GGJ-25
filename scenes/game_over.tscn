@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpx2jksgaoo6w"]
+
+[ext_resource type="PackedScene" uid="uid://bt0convd558f" path="res://scenes/environment.tscn" id="1_a5ewq"]
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_biqeu"]
+[ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_uc215"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqpok"]
+
+[node name="GameOver" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_biqeu")
+
+[node name="Environment" parent="." instance=ExtResource("1_a5ewq")]
+layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(750, 90)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_uc215")
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=2.0 connected=1][center]THANKS FOR PLAYING!
+[/center][/wave]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_uc215")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=2.0 connected=1][center]GLOBAL GAME JAM 2025
+[/center][/wave]"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.985823, 0.794103, 0.449226, 1)
+theme_override_fonts/normal_font = ExtResource("2_uc215")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Andrew Liu
+Matt Bowman
+Mayur Deshmukh
+Zane Fadul
+[/center]"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uc215")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dqpok")
+text = "main menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -40,6 +40,9 @@ func getOrders(prices: Array[int], daysRemaining: int) -> Array[Order]:
 
 func getCurrentMoney():
 	return currentMoney
+	
+func getMarketValue():
+	return marketVal
 
 func setAgents(agentTypes:Array[String]) -> void:
 	$AgentPanelL.setAgents(agentTypes.slice(0, ceil(len(agentTypes)/2)))
@@ -99,6 +102,10 @@ func _on_sell_pressed() -> void:
 		print("You don't have that many shares!")
 	else:
 		_setOrderType(Order.OrderType.SELL)
+	
+	$PlayerActionsHBox/PlayerActionsVBox/Buy.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Sell.modulate = "00ff8c"
+	$PlayerActionsHBox/PlayerActionsVBox/Hold.modulate = "ffffff"
 
 func _on_buy_pressed() -> void:
 	print("Buy is pressed!")
@@ -109,14 +116,22 @@ func _on_buy_pressed() -> void:
 		print("You can't afford that!")
 	else:
 		_setOrderType(Order.OrderType.BUY)
+		
+	$PlayerActionsHBox/PlayerActionsVBox/Buy.modulate = "00ff8c"
+	$PlayerActionsHBox/PlayerActionsVBox/Sell.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Hold.modulate = "ffffff"
 
 func _on_hold_pressed() -> void:
 	print("Hold is pressed!")
 	_setOrderType(Order.OrderType.HOLD)
+	
+	$PlayerActionsHBox/PlayerActionsVBox/Buy.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Sell.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Hold.modulate = "00ff8c"
 
 func _setOrderQuantity(quantity:int) -> void:
 	orderQuantity = quantity
-	nextOrderDisplay.text = str(orderQuantity)
+	nextOrderDisplay.text = str(orderQuantity) + " shares"
 	
 func _on_up_pressed() -> void:
 	_setOrderQuantity(orderQuantity + 1)

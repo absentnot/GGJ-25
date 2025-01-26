@@ -52,10 +52,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -403.0
-offset_top = -118.0
-offset_right = -173.0
-offset_bottom = -17.0
+offset_left = -657.0
+offset_top = -77.0
+offset_right = -294.0
+offset_bottom = -3.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -65,6 +65,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Buy" type="Button" parent="PlayerActionsHBox/PlayerActionsVBox"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -74,6 +75,7 @@ text = "BUY
 "
 
 [node name="Sell" type="Button" parent="PlayerActionsHBox/PlayerActionsVBox"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -82,6 +84,7 @@ theme_override_fonts/font = ExtResource("2_x1c10")
 text = "SELL"
 
 [node name="Hold" type="Button" parent="PlayerActionsHBox/PlayerActionsVBox"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_x1c10")
@@ -92,26 +95,32 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Up" type="Button" parent="PlayerActionsHBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
 text = "UP"
 
 [node name="Down" type="Button" parent="PlayerActionsHBox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
 text = "DOWN"
 
-[node name="Lock" type="Button" parent="PlayerActionsHBox/VBoxContainer"]
+[node name="NextOrderDisplay" type="Label" parent="PlayerActionsHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 2
+
+[node name="Lock" type="Button" parent="PlayerActionsHBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
 text = "Lock!"
 
-[node name="NextOrderDisplay" type="Label" parent="PlayerActionsHBox"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_x1c10")
-text = "0"
-
 [node name="OrderVisualizer" type="TextureRect" parent="PlayerActionsHBox"]
+visible = false
 layout_mode = 2
 texture = ExtResource("2_lym6x")
 expand_mode = 2
@@ -119,21 +128,28 @@ script = ExtResource("2_hxlur")
 
 [node name="PlayerStats" type="VBoxContainer" parent="."]
 texture_filter = 1
-anchors_preset = 1
+custom_minimum_size = Vector2(150, 100)
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -74.0
-offset_bottom = 50.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -100.0
 grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
 
 [node name="PlayerCashDisplay" type="Label" parent="PlayerStats"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
+theme_override_font_sizes/font_size = 32
 text = "Cash: 100"
 
 [node name="PlayerSharesDisplay" type="Label" parent="PlayerStats"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
+theme_override_font_sizes/font_size = 32
 text = "Shares: 0"
 
 [node name="MarketVbox" type="VBoxContainer" parent="."]
@@ -161,6 +177,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_x1c10")
+theme_override_font_sizes/font_size = 32
 text = "Market Value
 "
 
@@ -214,5 +231,5 @@ visible = false
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Hold" to="." method="_on_hold_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Up" to="." method="_on_up_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Down" to="." method="_on_down_pressed"]
-[connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Lock" to="." method="_on_lock_pressed"]
+[connection signal="pressed" from="PlayerActionsHBox/Lock" to="." method="_on_lock_pressed"]
 [connection signal="mouse_entered" from="MarketVbox/MarketInfo" to="." method="_on_market_info_mouse_entered"]

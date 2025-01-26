@@ -44,6 +44,11 @@ func endDay() -> void:
 	currDay+=1
 	$HUD.setMarketValue(currentRound.getPrices(), maxDays- currDay)
 	$DayTimer.start()
+	
+	if Global.isMoneyZero():
+		$HUD/PlayerCrab.nervous()
+	else:
+		$HUD/PlayerCrab.idle()
 
 func endRound() -> void:
 	print("Round is over! Uh oh!")
@@ -68,6 +73,8 @@ func _nextLevel() -> void:
 			Global.level = "roundFour"
 		"roundFour":
 			Global.level = "roundFive"
+		"LASTROUND":
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 		_:
 			Global.level = "roundOne"
 	loadRound()
