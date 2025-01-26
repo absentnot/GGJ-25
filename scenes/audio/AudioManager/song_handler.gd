@@ -81,6 +81,7 @@ func _on_song_start(song):
 	#implement, to take parameters based on a specific playback position using seconds, OR by beat
 	
 func _on_song_reached_end(song):
+	print('song reached end')
 	var on_end_func = null
 	if song.has_param('on_end'):
 		on_end_func = on_end_types[song.get_param('on_end')]
@@ -91,10 +92,12 @@ func _on_song_reached_end(song):
 	on_end_func.call(song)
 	
 func _on_song_file_end(song):
+	print(song, 'ended')
 	remove_song(song)
 
 func _on_load_track_request(song, song_params):
 	emit_signal('load_track_request', song, song_params)
 	
 func _on_remove_request(song):
+	print(song, 'requested for removal')
 	remove_song(song)
