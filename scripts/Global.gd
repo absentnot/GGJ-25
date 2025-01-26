@@ -1,5 +1,6 @@
 extends Node
 var level: String
+var gametitle: String ='Bubble Brokers' 
 
 func getCurrentMusicContext():
 	var root = get_tree().get_root()
@@ -24,7 +25,7 @@ func isMoneyZero():
 	var root = get_tree().get_root()
 	var hud =  root.get_node("Main").get_node_or_null("HUD") if root.get_node_or_null("Main") != null else null
 	if hud:
-		if hud.getCurrentMoney() <= 0:
+		if hud.getCurrentMoney() < hud.getMarketValue():
 			return "true"
 		else:
 			return "false"

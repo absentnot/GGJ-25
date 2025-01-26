@@ -1,0 +1,17 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://d3q670k8yj5wm"]
+
+[ext_resource type="Texture2D" uid="uid://c8wip08mpy0o5" path="res://assets/art/thoth-idle1.png" id="1_kuh3a"]
+[ext_resource type="Texture2D" uid="uid://dkxogp07rpo1p" path="res://assets/art/thoth-idle2.png" id="2_1t8rh"]
+[ext_resource type="Texture2D" uid="uid://dm76td850f317" path="res://assets/art/thoth-idle3.png" id="3_7ek87"]
+[ext_resource type="Texture2D" uid="uid://dgwso3qwo7fgp" path="res://assets/art/thoth-idle4.png" id="4_nv6pg"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_kuh3a")
+frame_0/duration = 2.25
+frame_1/texture = ExtResource("2_1t8rh")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("3_7ek87")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("4_nv6pg")
+frame_3/duration = 0.1

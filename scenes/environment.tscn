@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://bt0convd558f"]
+[gd_scene load_steps=26 format=3 uid="uid://bt0convd558f"]
 
 [ext_resource type="Script" path="res://environment.gd" id="1_twupc"]
-[ext_resource type="Material" uid="uid://cb3rk3i1ls2bw" path="res://shaders/waveMat.tres" id="1_ytdo2"]
+[ext_resource type="Material" uid="uid://b2fgksyiqmcoj" path="res://shaders/waveMat.tres" id="1_ytdo2"]
 [ext_resource type="Texture2D" uid="uid://dlp6c5a4kwtc4" path="res://assets/art/GAME-BG-bg.png" id="2_5q4pg"]
 [ext_resource type="Texture2D" uid="uid://bep0evl4esev6" path="res://assets/art/GAME-BG-bgrocks.png" id="3_qebtf"]
 [ext_resource type="Texture2D" uid="uid://bffdc3thct40h" path="res://assets/art/GAME-BG-foreground.png" id="4_p1u4a"]
@@ -12,6 +12,59 @@
 [ext_resource type="Texture2D" uid="uid://b35ak4f1qe8s7" path="res://assets/art/GAME-BG-SEAWEEED1.png" id="9_1wjib"]
 [ext_resource type="Texture2D" uid="uid://4plryku3css1" path="res://assets/art/GAME-BG-FRONT.png" id="10_s0f6l"]
 [ext_resource type="Texture2D" uid="uid://fhbr8mfqn8kw" path="res://assets/art/bubble.png" id="12_wyhgd"]
+
+[sub_resource type="Shader" id="Shader_s8j8y"]
+code = "shader_type canvas_item;
+
+uniform sampler2D flowMap; //Displacement map
+uniform float strength;    //Force of the effect
+uniform float speed;       //Speed of the effect
+
+uniform bool flowing;
+
+uniform int frames : hint_range(1, 10); //Frames of the effect
+
+//Returns a value between 0 and 1 depending of the frames -> exemple: frames = 4, frame 1 = 0.25
+float clock(float time){
+	float fframes = float(frames);
+	return floor(mod(time * speed, fframes)) / fframes;
+}
+
+void fragment(){
+	if(flowing){
+		float c = clock(TIME); //Get clock frame
+		vec4 offset = texture(flowMap, vec2(UV.x + c, UV.y + c)) * strength; //Get offset
+		//COLOR = texture(TEXTURE, vec2(UV.x,UV.y) + normal.xy); //Apply offset
+		COLOR = texture(TEXTURE, vec2(UV.x,UV.y) + offset.xy - vec2(0.5,0.5)*strength)* vec4(0.8, 0.8, 1.0, 1.0); //We need to remove the displacement
+	}
+
+}
+
+
+// TEST CLOCK
+/*
+void fragment(){
+	float c = clock(TIME);
+	COLOR = vec4( c, c, c, 1);
+}
+*/"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ou4ix"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4lc12"]
+width = 52
+height = 52
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_ou4ix")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jtrr"]
+shader = SubResource("Shader_s8j8y")
+shader_parameter/strength = 0.002
+shader_parameter/speed = 4.0
+shader_parameter/flowing = true
+shader_parameter/frames = 8
+shader_parameter/flowMap = SubResource("NoiseTexture2D_4lc12")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uv8ss"]
 
@@ -38,7 +91,7 @@ shader_parameter/flowing = true
 shader_parameter/frames = 8
 shader_parameter/flowMap = SubResource("NoiseTexture2D_mw4ro")
 
-[sub_resource type="Shader" id="Shader_s8j8y"]
+[sub_resource type="Shader" id="Shader_t8e22"]
 code = "shader_type canvas_item;
 
 uniform sampler2D flowMap; //Displacement map
@@ -84,7 +137,7 @@ as_normal_map = true
 noise = SubResource("FastNoiseLite_1sh8l")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yw0vy"]
-shader = SubResource("Shader_s8j8y")
+shader = SubResource("Shader_t8e22")
 shader_parameter/strength = 0.1
 shader_parameter/speed = 8.0
 shader_parameter/flowing = true
@@ -139,6 +192,7 @@ grow_vertical = 2
 texture = ExtResource("3_qebtf")
 
 [node name="Foreground" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_7jtrr")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

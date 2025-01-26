@@ -11,9 +11,13 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+	
+
 
 func _nextState(newState: int) -> void:
 	state = newState
@@ -25,11 +29,11 @@ func _updateText() -> void:
 		0:
 			position = Vector2(400,200)
 			backButton.visible = false
-			infoText = "Welcome to ECONOMY BUBBLE! This is an exciting game of market pricing and crabs?\nIn ECNOMY BUBBLE, you will issue BUY/SELL/HOLD orders using to try to maximize profits in different markets before the bubble bursts!"
+			infoText = "Welcome to "+Global.gametitle+"! This is an exciting game of market pricing and crabs?\nIn "+Global.gametitle+", you will issue BUY/SELL/HOLD orders to try to maximize profits in different markets before the bubble bursts!"
 		1:
 			position = Vector2(400,50)
 			backButton.visible = true
-			infoText = "This display will show the current price and price history in the current market. \n A red line means the price is down, a green line goes up, and a purple line is a constant price."
+			infoText = "This display will show the current price and price history in the current market. \n A red line means the price is going down, a green line - it is going up, and a purple line is a constant price."
 		2:
 			position = Vector2(600,25)
 			infoText = "Here, your current cash (in $UDS, of course) and shares are shown. You cannot sell shares you don't have, and you can't buy shares you can't afford!"
@@ -60,3 +64,9 @@ func _on_back_pressed() -> void:
 func _on_next_pressed() -> void:
 	_nextState(state+1)
 	pass # Replace with function body.
+
+
+	
+
+
+ # Replace with function body.

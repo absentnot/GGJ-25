@@ -30,6 +30,13 @@ func display(profit:int, sharesBought: int) -> void:
 	else:
 		crabTitle = "Crabsolute Genius"
 	crabTitleLabel.text = crabTitle
+	
+	if profit < 25:
+		$PlayerCrab.sad()
+	elif profit > 75:
+		$PlayerCrab.winning()
+	else:
+		$PlayerCrab.idle()
 
 func _on_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")

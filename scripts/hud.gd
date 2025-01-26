@@ -55,15 +55,21 @@ func reset(days:int) -> void:
 	_updateCashAndShares(Order.new(0))
 	
 func getOrders(prices: Array[int], daysRemaining: int) -> Array[Order]:
-	var agentOrders = $AgentPanel.getOrders(prices, daysRemaining)
+	var agentOrders = $AgentPanelL.getOrders(prices, daysRemaining)
+	agentOrders.push_back($AgentPanelR.getOrders(prices, daysRemaining))
+	
 	agentOrders.push_back(getPlayerOrder())
 	return agentOrders
 
 func getCurrentMoney():
 	return currentMoney
+	
+func getMarketValue():
+	return marketVal
 
 func setAgents(agentTypes:Array[String]) -> void:
-	$AgentPanel.setAgents(agentTypes)
+	$AgentPanelL.setAgents(agentTypes.slice(0, ceil(len(agentTypes)/2)))
+	$AgentPanelR.setAgents(agentTypes.slice(ceil(len(agentTypes)/2), len(agentTypes)))
 	
 func setMarketValue(prices: Array[int], daysRemaining: int) -> void:
 	var newVal = prices[prices.size()-1]
@@ -121,6 +127,10 @@ func _on_sell_pressed() -> void:
 		print("You don't have that many shares!")
 	else:
 		_setOrderType(Order.OrderType.SELL)
+	
+	$PlayerActionsHBox/PlayerActionsVBox/Buy.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Sell.modulate = "00ff8c"
+	$PlayerActionsHBox/PlayerActionsVBox/Hold.modulate = "ffffff"
 
 func _on_buy_pressed() -> void:
 	print("Buy is pressed!")
@@ -134,14 +144,21 @@ func _on_buy_pressed() -> void:
 	else:
 		_setOrderType(Order.OrderType.BUY)
 		
+	$PlayerActionsHBox/PlayerActionsVBox/Buy.modulate = "00ff8c"
+	$PlayerActionsHBox/PlayerActionsVBox/Sell.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Hold.modulate = "ffffff"
 
 func _on_hold_pressed() -> void:
 	print("Hold is pressed!")
 	_setOrderType(Order.OrderType.HOLD)
+	
+	$PlayerActionsHBox/PlayerActionsVBox/Buy.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Sell.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Hold.modulate = "00ff8c"
 
 func _setOrderQuantity(quantity:int) -> void:
 	orderQuantity = quantity
-	nextOrderDisplay.text = str(orderQuantity)
+	nextOrderDisplay.text = str(orderQuantity) + " shares"
 	
 func _on_up_pressed() -> void:
 	increase_share.emit() #sfx
