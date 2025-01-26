@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://daplwaiaowq6"]
+
+[ext_resource type="Script" path="res://scripts/agentInfoTooltip.gd" id="1_2sexq"]
+
+[node name="AgentInfoTooltip" type="PopupPanel"]
+visible = true
+script = ExtResource("1_2sexq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
