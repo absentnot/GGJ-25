@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnhtjauuofwrl"]
+[gd_scene load_steps=7 format=3 uid="uid://cnhtjauuofwrl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
 [ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_hxlur"]
 [ext_resource type="Script" path="res://scripts/priceDisplay.gd" id="2_jefl5"]
 [ext_resource type="Texture2D" uid="uid://dqgeq3quoxin" path="res://assets/art/hold.png" id="2_lym6x"]
+[ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_x1c10"]
 [ext_resource type="PackedScene" uid="uid://f5lgc56hlwoh" path="res://scenes/agentPanel.tscn" id="5_6wdav"]
 
 [node name="Hud" type="CanvasLayer"]
@@ -31,6 +32,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_x1c10")
 text = "BUY
 "
 
@@ -39,17 +41,20 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_x1c10")
 text = "SELL"
 
 [node name="Hold" type="Button" parent="PlayerActionsHBox/PlayerActionsVBox"]
 layout_mode = 2
 focus_mode = 0
+theme_override_fonts/font = ExtResource("2_x1c10")
 text = "HOLD"
 
 [node name="QuantityInput" type="LineEdit" parent="PlayerActionsHBox"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_x1c10")
 placeholder_text = "Amt"
 
 [node name="OrderVisualizer" type="TextureRect" parent="PlayerActionsHBox"]
@@ -68,10 +73,12 @@ grow_horizontal = 0
 
 [node name="PlayerCashDisplay" type="Label" parent="PlayerStats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
 text = "Cash: 100"
 
 [node name="PlayerSharesDisplay" type="Label" parent="PlayerStats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
 text = "Shares: 0"
 
 [node name="MarketVbox" type="VBoxContainer" parent="."]
@@ -89,6 +96,7 @@ size_flags_vertical = 0
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_x1c10")
 text = "Market Value
 "
 
