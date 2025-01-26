@@ -7,11 +7,10 @@
 script = ExtResource("1_l4ghx")
 
 [node name="HUD" parent="." instance=ExtResource("2_kbh8a")]
-texture_filter = 1
 
 [node name="DayTimer" type="Timer" parent="."]
 wait_time = 10.0
 
-[node name="HUD" parent="." instance=ExtResource("2_kbh8a")]
+[node name="HUD2" parent="." instance=ExtResource("2_kbh8a")]
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
