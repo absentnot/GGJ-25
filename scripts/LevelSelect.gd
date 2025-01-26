@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_level1_pressed() -> void:
 	print("Button pressed")
-	Global.level=1
+	Global.level="res://scenes/RoundOne.tscn"
 	get_tree().change_scene_to_file(playscene_path)
 	
 
@@ -23,25 +23,25 @@ func _on_level1_pressed() -> void:
 
 func _on_level2_pressed() -> void:
 	print("Button pressed")
-	Global.level=2
+	Global.level="res://scenes/roundTwo.tscn"
 	get_tree().change_scene_to_file(playscene_path)
 
 
 func _on_level3_pressed() -> void:
 	print("Button pressed")
-	Global.level=3
+	Global.level="res://scenes/roundThree.tscn"
 	get_tree().change_scene_to_file(playscene_path)
 
 
 func _on_level4_pressed() -> void:
 	print("Button pressed")
-	Global.level=4
+	Global.level="res://scenes/roundFour.tscn"
 	get_tree().change_scene_to_file(playscene_path)
 
 
 func _on_level5_pressed() -> void:
 	print("Button pressed")
-	Global.level=5
+	Global.level="res://scenes/roundFive.tscn"
 	get_tree().change_scene_to_file(playscene_path)
 	
 func _on_back_pressed() -> void:
