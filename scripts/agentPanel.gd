@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 func setAgents(agentNames: Array[String]):
 	for n in agents:
 		n.queue_free()
+		agents = []
 	for agent in agentNames:
 		var newScene = agentScene.instantiate()
 		newScene.agentType = agent

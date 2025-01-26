@@ -5,11 +5,14 @@ var orderQuantity: int = 0
 var currentShares: int = 0
 var currentMoney: int = 100
 var marketVal: int = 0
+var totalSharesBought:int = 0
+var initialMoney:int = 100
 @onready var graph = get_node("MarketVbox/Graph")
 @onready var marketValueDisplay = get_node("MarketVbox/MarketValueDisplay")
 @onready var playerCashDisplay = get_node("PlayerStats/PlayerCashDisplay")
 @onready var playerSharesDisplay = get_node("PlayerStats/PlayerSharesDisplay")
 @onready var orderVisualizer = get_node("PlayerActionsHBox/OrderVisualizer")
+@onready var quantityInput = get_node("PlayerActionsHBox/QuantityInput")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_updateCashAndShares(Order.new(0))
@@ -19,6 +22,12 @@ func getPlayerOrder() -> Order:
 	var nextOrder = Order.new(orderQuantity, playerOrder)
 	_updateCashAndShares(nextOrder)
 	return nextOrder
+
+func reset(days:int) -> void:
+	currentShares = 0
+	currentMoney = 100
+	graph.reset(days)
+	_updateCashAndShares(Order.new(0))
 	
 func getOrders(prices: Array[int], daysRemaining: int) -> Array[Order]:
 	var agentOrders = $AgentPanel.getOrders(prices, daysRemaining)
@@ -32,8 +41,18 @@ func setMarketValue(prices: Array[int], daysRemaining: int) -> void:
 	var newVal = prices[prices.size()-1]
 	marketVal = newVal
 	marketValueDisplay.text = str(marketVal)
-	graph.addPoint(newVal)
-	getOrders(prices, daysRemaining)
+	if(daysRemaining >= 0):
+		graph.addPoint(newVal)
+		getOrders(prices, daysRemaining)
+
+func getFinalStats() -> Array[int]:
+	liquidate()
+	return [currentMoney - initialMoney, totalSharesBought]
+	
+func liquidate() -> void:
+	if(currentShares > 0):
+		currentMoney += (currentShares * marketVal)
+		currentShares = 0
 	
 func _updateCashAndShares(nextOrder: Order) -> void:
 	match nextOrder.type:
@@ -42,11 +61,16 @@ func _updateCashAndShares(nextOrder: Order) -> void:
 			currentMoney += (orderQuantity * marketVal)
 		Order.OrderType.BUY:
 			currentShares += orderQuantity
+			totalSharesBought += orderQuantity
 			currentMoney -= (orderQuantity * marketVal)
 		Order.OrderType.HOLD:
 			pass
 	playerCashDisplay.text = str(currentMoney) + " $UDS"
 	playerSharesDisplay.text = str(currentShares) + " Shares"
+	orderQuantity = 0
+	quantityInput.text = ""
+	_setOrderType(Order.OrderType.HOLD)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -61,13 +85,18 @@ func _on_sell_pressed() -> void:
 	print("Sell is pressed!")
 	if(orderQuantity < 1):
 		print("Stupid player, you can't sell less than 1 share!")
+	elif(orderQuantity > currentShares):
+		print("You don't have that many shares!")
 	else:
 		_setOrderType(Order.OrderType.SELL)
 
 func _on_buy_pressed() -> void:
 	print("Buy is pressed!")
+	var price = orderQuantity * marketVal
 	if(orderQuantity < 1):
 		print("Stupid player, you can't buy less than 1 share!")
+	elif(price > currentMoney):
+		print("You can't afford that!")
 	else:
 		_setOrderType(Order.OrderType.BUY)
 

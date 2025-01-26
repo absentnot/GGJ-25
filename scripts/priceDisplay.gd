@@ -19,7 +19,13 @@ var green = Color.GREEN
 func _ready() -> void:
 	points = []
 	pass # Replace with function body.
-
+	
+func reset(days: int) -> void:
+	points =[]
+	maxDays = days
+	maxPriceSeen = 100
+	maxPrice = maxPriceSeen * 2
+	minPrice =  0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
