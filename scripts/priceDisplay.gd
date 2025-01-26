@@ -23,6 +23,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 func reset(days: int) -> void:
+	for n in get_children():
+		n.queue_free()
 	points =[]
 	maxDays = days
 	maxPriceSeen = 100
