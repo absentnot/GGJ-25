@@ -10,9 +10,6 @@ func updatePrice(orders: Array[Order]) -> void:
 	var triggerNumber = orders.size() / 2
 	var currentPrice = prices[prices.size()-1]
 	var nextPrice = _fluctuate()
-	# If there's an odd number of agents, round up.
-	if(orders.size()%2==1):
-		triggerNumber += 1
 	var buyOrders = orders.filter(func(order:Order): return order.type == Order.OrderType.BUY).size()
 	if(buyOrders > triggerNumber):
 		nextPrice = roundi(currentPrice * priceSwingAmount)
