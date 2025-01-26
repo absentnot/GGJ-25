@@ -5,6 +5,8 @@ var orderQuantity: int = 0
 var currentShares: int = 0
 var currentMoney: int = 100
 var marketVal: int = 0
+var totalSharesBought:int = 0
+var initialMoney:int = 100
 @onready var graph = get_node("MarketVbox/Graph")
 @onready var marketValueDisplay = get_node("MarketVbox/MarketValueDisplay")
 @onready var playerCashDisplay = get_node("PlayerStats/PlayerCashDisplay")
@@ -35,6 +37,15 @@ func setMarketValue(prices: Array[int], daysRemaining: int) -> void:
 	if(daysRemaining >= 0):
 		graph.addPoint(newVal)
 		getOrders(prices, daysRemaining)
+
+func getFinalStats() -> Array[int]:
+	liquidate()
+	return [currentMoney - initialMoney, totalSharesBought]
+	
+func liquidate() -> void:
+	if(currentShares > 0):
+		currentMoney += (currentShares * marketVal)
+		currentShares = 0
 	
 func _updateCashAndShares(nextOrder: Order) -> void:
 	match nextOrder.type:
@@ -43,6 +54,7 @@ func _updateCashAndShares(nextOrder: Order) -> void:
 			currentMoney += (orderQuantity * marketVal)
 		Order.OrderType.BUY:
 			currentShares += orderQuantity
+			totalSharesBought += orderQuantity
 			currentMoney -= (orderQuantity * marketVal)
 		Order.OrderType.HOLD:
 			pass

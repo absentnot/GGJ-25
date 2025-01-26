@@ -33,3 +33,9 @@ func endRound() -> void:
 	print("Round is over! Uh oh!")
 	$DayTimer.set_paused(true)
 	$DayTimer.stop()
+	var stats = $HUD.getFinalStats()
+	currentRound.queue_free()
+	$HUD.visible = false
+	var resultsScreen = load("res://scenes/score.tscn").instantiate()
+	add_child(resultsScreen)
+	resultsScreen.display(stats[0], stats[1])
