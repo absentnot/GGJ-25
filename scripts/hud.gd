@@ -143,8 +143,9 @@ func _on_up_pressed() -> void:
 	_setOrderQuantity(orderQuantity + 1)
 
 func _on_down_pressed() -> void:
-	decrease_share.emit() #sfx
-	_setOrderQuantity(orderQuantity - 1)
+	if(orderQuantity > 0):
+		decrease_share.emit() #sfx
+		_setOrderQuantity(orderQuantity - 1)
 
 func _on_lock_pressed() -> void:
 	emit_signal("locked")
