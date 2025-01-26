@@ -1,7 +1,7 @@
 extends Node2D
-
-
+var parameter: int
 var currentRound = null
+
 var maxDays
 var currDay = 0
 # Called when the node enters the scene tree for the first time.
@@ -9,7 +9,7 @@ func _ready():
 	loadRound()
 	
 func loadRound():
-	currentRound = load("res://scenes/roundThree.tscn").instantiate()
+	currentRound = load(Global.level).instantiate()
 	currentRound.roundOver.connect(endRound)
 	maxDays = currentRound.getMaxDays()
 	add_child(currentRound)
