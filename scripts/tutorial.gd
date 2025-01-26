@@ -54,7 +54,8 @@ func _updateText() -> void:
 		7:
 			infoText = "Behold! A ghost panel!"
 			tutorialEnd.emit()
-	info.text = infoText
+	if info:
+		info.text = infoText
 
 func _on_back_pressed() -> void:
 	_nextState(state-1)
