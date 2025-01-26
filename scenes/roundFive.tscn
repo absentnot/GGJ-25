@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1ykqj16g576y"]
 
 [ext_resource type="Script" path="res://scripts/round.gd" id="1_hd3x5"]
-[ext_resource type="Script" path="res://scripts/peerPressureMarket.gd" id="2_g0r2a"]
+[ext_resource type="Script" path="res://scripts/markets/peerPressureMarket.gd" id="2_g0r2a"]
 [ext_resource type="Script" path="res://scripts/agents/snowcrabAgent.gd" id="3_h8v2j"]
 [ext_resource type="Script" path="res://scripts/agents/riskyThothAgent.gd" id="4_3nt74"]
 

@@ -1,15 +1,43 @@
 extends Node2D
-
-
+var parameter: int
 var currentRound = null
+
+
+
+#var currentRound = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentRound = load("res://scenes/roundThree.tscn").instantiate()
-	currentRound.roundOver.connect(endRound)
-	add_child(currentRound)
-	$DayTimer.start()
+	print("Request for received for level:", Global.level)
 
-
+	
+	print("Launching level ", Global.level)
+	
+	if Global.level == 1:
+		currentRound = load("res://scenes/roundOne.tscn").instantiate()
+		currentRound.roundOver.connect(endRound)
+		add_child(currentRound)
+		$DayTimer.start()	
+	elif Global.level == 2:
+		currentRound = load("res://scenes/roundTwo.tscn").instantiate()
+		currentRound.roundOver.connect(endRound)
+		add_child(currentRound)
+		$DayTimer.start()	
+	elif Global.level == 3:
+		currentRound = load("res://scenes/roundThree.tscn").instantiate()
+		currentRound.roundOver.connect(endRound)
+		add_child(currentRound)
+		$DayTimer.start()	
+	elif Global.level == 4:
+		currentRound = load("res://scenes/roundThree.tscn").instantiate()
+		currentRound.roundOver.connect(endRound)
+		add_child(currentRound)
+		$DayTimer.start()	
+	elif Global.level == 5:
+		currentRound = load("res://scenes/roundFour.tscn").instantiate()
+		currentRound.roundOver.connect(endRound)
+		add_child(currentRound)
+		$DayTimer.start()			
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

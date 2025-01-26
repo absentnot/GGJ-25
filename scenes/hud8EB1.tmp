@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnhtjauuofwrl"]
+[gd_scene load_steps=3 format=3 uid="uid://cnhtjauuofwrl"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_joi6o"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
+[ext_resource type="Script" path="res://scenes/priceDisplay.gd" id="2_jefl5"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
@@ -87,6 +88,11 @@ offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
 text = "Shares: 0"
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_jefl5")
+dotRadius = null
+lineWidth = null
 
 [connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="Sell" to="." method="_on_sell_pressed"]
