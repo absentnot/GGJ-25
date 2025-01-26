@@ -178,3 +178,7 @@ func _on_market_info_mouse_entered() -> void:
 	print("MOUSE ENTERED ON MINFO")
 	$MarketInfoPopup.position = Vector2(marketNameDisplay.position)
 	$MarketInfoPopup.popup()
+
+
+func _on_market_info_mouse_exited():
+	$MarketInfoPopup.hide()
