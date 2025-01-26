@@ -7,4 +7,4 @@ func decide(prices: Array[int], daysRemaining: int) -> Order:
 	return Order.new(0)
 
 func _init() -> void:
-	super._init("gretchen.png")
+	spriteName = "gretchen.png"
