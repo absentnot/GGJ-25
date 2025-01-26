@@ -1,12 +1,13 @@
 extends CanvasItem
 
 var points: Array[Vector2]
-var heightMax = 500
+var MAX_HEIGHT = 500
+var MAX_WIDTH = 500
 var maxDays: int = 5
 var maxPriceSeen: int = 100
 var maxPrice: int = maxPriceSeen * 2
 var minPrice: int = 0
-@export var widthStep: int = 100
+var widthStep: int = MAX_WIDTH / maxDays
 @export var heightStep: int = 50
 @export var dotRadius = 10
 @export var lineWidth = 6
@@ -26,6 +27,7 @@ func reset(days: int) -> void:
 	maxPriceSeen = 100
 	maxPrice = maxPriceSeen * 2
 	minPrice =  0
+	widthStep = MAX_WIDTH / maxDays
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,13 +44,13 @@ func addPoint(newMarketPrice: int) -> void:
 	elif(newMarketPrice > maxPriceSeen):
 		maxPriceSeen = maxPrice
 	# We map from price space into pixel space
-	var heightRatio = float(heightMax)/float(maxPrice)
+	var heightRatio = float(MAX_HEIGHT)/float(maxPrice)
 	var rescaledY = newMarketPrice * (heightRatio)
-	var newPoint = Vector2(prevPoint.x + widthStep,heightMax - rescaledY)
+	var newPoint = Vector2(prevPoint.x + widthStep,MAX_HEIGHT - rescaledY)
 	points.push_back(newPoint)
 	var label = Label.new()
 	label.text = str(newMarketPrice)
-	label.set_position(Vector2(prevPoint.x + widthStep,heightMax + 25))
+	label.set_position(Vector2(prevPoint.x + widthStep,MAX_HEIGHT + 25))
 	add_child(label)
 	queue_redraw()
 
@@ -58,20 +60,19 @@ func _resize(newMarketPrice: int) -> void:
 	maxPrice = newMarketPrice * 2
 	maxPriceSeen = newMarketPrice
 	for i in range(points.size()):
-		var originalRatio = -1 * (points[i].y - heightMax)
+		var originalRatio = -1 * (points[i].y - MAX_HEIGHT)
 		var newRatio = originalRatio * (float(prevMaxPrice) / float(maxPrice))
-		points[i].y = (heightMax - newRatio)
+		points[i].y = (MAX_HEIGHT - newRatio)
 	
 func _draw():
-	var widthMax = maxDays * widthStep
-	draw_line(Vector2(0,heightMax), Vector2(0, 0), black, 8)
-	draw_line(Vector2(0,heightMax), Vector2(widthMax, heightMax), black, 8)
-	for i in range(widthStep, widthMax, widthStep):
+	draw_line(Vector2(0,MAX_HEIGHT), Vector2(0, 0), black, 8)
+	draw_line(Vector2(0,MAX_HEIGHT), Vector2(MAX_WIDTH, MAX_HEIGHT), black, 8)
+	for i in range(widthStep, MAX_WIDTH, widthStep):
 		# Draw vertical grid lines every widthstep 
-		draw_line(Vector2(i, 0), Vector2(i, heightMax),  opaqueGrey, 2)
-	for i in range(heightStep, heightMax, heightStep):
+		draw_line(Vector2(i, 0), Vector2(i, MAX_HEIGHT),  opaqueGrey, 2)
+	for i in range(heightStep, MAX_HEIGHT, heightStep):
 		# draw horizontal grid lines every heightstep
-		draw_line(Vector2(0, i), Vector2(widthMax, i),  veryOpaqueGrey, 2)
+		draw_line(Vector2(0, i), Vector2(MAX_WIDTH, i),  veryOpaqueGrey, 2)
 	var prevY = 0
 	for i in range(points.size()):
 		var point = points[i]
