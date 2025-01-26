@@ -28,12 +28,19 @@ func _process(delta):
 	pass
 
 func _on_day_timer_timeout() -> void:
+	endDay()
+	
+func _on_hud_locked() -> void:
+	endDay()
+
+
+func endDay() -> void:
 	print("Bing! Next day")
 	var orders = $HUD.getOrders(currentRound.getPrices(), maxDays - currDay)
 	currentRound.processDay(orders)
 	currDay+=1
 	$HUD.setMarketValue(currentRound.getPrices(), maxDays- currDay)
-	$DayTimer.start()	
+	$DayTimer.start()
 
 func endRound() -> void:
 	print("Round is over! Uh oh!")
