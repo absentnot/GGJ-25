@@ -40,6 +40,10 @@ func addPoint(newMarketPrice: int) -> void:
 	var rescaledY = newMarketPrice * (heightRatio)
 	var newPoint = Vector2(prevPoint.x + widthStep,heightMax - rescaledY)
 	points.push_back(newPoint)
+	var label = Label.new()
+	label.text = str(newMarketPrice)
+	label.set_position(Vector2(prevPoint.x + widthStep,heightMax + 25))
+	add_child(label)
 	queue_redraw()
 
 func _resize(newMarketPrice: int) -> void:
