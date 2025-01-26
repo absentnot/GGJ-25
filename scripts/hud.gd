@@ -12,7 +12,7 @@ var initialMoney:int = 100
 @onready var playerCashDisplay = get_node("PlayerStats/PlayerCashDisplay")
 @onready var playerSharesDisplay = get_node("PlayerStats/PlayerSharesDisplay")
 @onready var orderVisualizer = get_node("PlayerActionsHBox/OrderVisualizer")
-@onready var quantityInput = get_node("PlayerActionsHBox/QuantityInput")
+@onready var nextOrderDisplay = get_node("PlayerActionsHBox/NextOrderDisplay")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_updateCashAndShares(Order.new(0))
@@ -67,8 +67,7 @@ func _updateCashAndShares(nextOrder: Order) -> void:
 			pass
 	playerCashDisplay.text = str(currentMoney) + " $UDS"
 	playerSharesDisplay.text = str(currentShares) + " Shares"
-	orderQuantity = 0
-	quantityInput.text = ""
+	_setOrderQuantity(0)
 	_setOrderType(Order.OrderType.HOLD)
 	
 
@@ -79,7 +78,6 @@ func _process(delta: float) -> void:
 func _setOrderType(nextOrderType: Order.OrderType) -> void:
 	playerOrder = nextOrderType
 	orderVisualizer.updateOrder(nextOrderType)
-	
 	
 func _on_sell_pressed() -> void:
 	print("Sell is pressed!")
@@ -104,6 +102,12 @@ func _on_hold_pressed() -> void:
 	print("Hold is pressed!")
 	_setOrderType(Order.OrderType.HOLD)
 
-func _on_quantity_input_text_submitted(new_text: String) -> void:
-	print("Text changed! New line: " + new_text)
-	orderQuantity = int(new_text)
+func _setOrderQuantity(quantity:int) () -> void:
+	orderQuantity = quantity
+	nextOrderDisplay.text = str("orderQuantity")
+	
+func _on_up_pressed() -> void:
+	_setOrderQuantity(orderQuantity + 1)
+
+func _on_down_pressed() -> void:
+	_setOrderQuantity(orderQuantity - 1)
