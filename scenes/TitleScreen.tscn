@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfcg6a1bw8oyu"]
+[gd_scene load_steps=9 format=3 uid="uid://7x43idvwc0tm"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_o1wpw"]
 [ext_resource type="PackedScene" uid="uid://b7niqv1ajes70" path="res://scenes/LevelSelect.tscn" id="2_v64ue"]
-[ext_resource type="PackedScene" uid="uid://bt0convd558f" path="res://scenes/environment.tscn" id="3_cshli"]
+[ext_resource type="PackedScene" path="res://scenes/environment.tscn" id="3_cshli"]
 [ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="4_6nnm3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bser5"]
