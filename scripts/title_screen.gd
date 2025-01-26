@@ -12,10 +12,6 @@ func _ready() -> void:
 	background_music.stream = music_stream
 	background_music.play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_start_pressed() -> void:
 	Global.level="roundOne"
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
