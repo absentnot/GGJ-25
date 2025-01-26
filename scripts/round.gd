@@ -24,6 +24,9 @@ func getAgentTypes() -> Array[String]:
 func getMaxDays() -> int:
 	return maxDays
 
+func isLastDay() -> bool:
+	return day == maxDays
+
 func processDay(orders: Array[Order]) -> void:
 	day += 1
 	print("Day in round: " + str(day))
