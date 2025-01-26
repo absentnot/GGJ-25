@@ -15,9 +15,9 @@ func updatePrice(orders: Array[Order]) -> void:
 		triggerNumber += 1
 	var buyOrders = orders.filter(func(order:Order): return order.type == Order.OrderType.BUY).size()
 	if(buyOrders >= triggerNumber):
-		nextPrice = currentPrice * priceSwingAmount
+		nextPrice = round(currentPrice * priceSwingAmount)
 	var sellOrders = orders.filter(func(order:Order): return order.type == Order.OrderType.SELL).size()
 	if(sellOrders >= triggerNumber):
-		nextPrice = currentPrice / priceSwingAmount
+		nextPrice = round(currentPrice / priceSwingAmount)
 	prices.push_back(nextPrice)
 	
