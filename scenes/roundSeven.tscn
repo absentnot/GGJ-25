@@ -7,5 +7,5 @@
 script = ExtResource("1_pk6al")
 agentTypes = Array[String](["gretchen", "thoth"])
 
-[node name="LoneWolfMarket" type="Node2D" parent="."]
+[node name="LoneWolfMarket" type="Node2D" parent="." groups=["MarketGroup"]]
 script = ExtResource("2_jhyku")
