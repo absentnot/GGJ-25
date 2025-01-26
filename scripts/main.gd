@@ -29,7 +29,7 @@ func loadRound():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $Tutorial:
+	if get_node_or_null("Tutorial"):
 		$Tutorial.popup()
 
 func _on_day_timer_timeout() -> void:
