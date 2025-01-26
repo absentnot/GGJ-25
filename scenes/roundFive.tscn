@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1ykqj16g576y"]
+[gd_scene load_steps=4 format=3 uid="uid://b1ykqj16g576y"]
 
 [ext_resource type="Script" path="res://scripts/round.gd" id="1_hd3x5"]
 [ext_resource type="Script" path="res://scripts/markets/peerPressureMarket.gd" id="2_g0r2a"]
-[ext_resource type="Script" path="res://scripts/agents/snowcrabAgent.gd" id="3_h8v2j"]
-[ext_resource type="Script" path="res://scripts/agents/riskyThothAgent.gd" id="4_3nt74"]
+[ext_resource type="PackedScene" uid="uid://dkn1c4ra3b6nd" path="res://scenes/agentScene.tscn" id="3_wn4ja"]
 
 [node name="RoundFive" type="Node2D"]
 script = ExtResource("1_hd3x5")
@@ -17,14 +16,8 @@ offset_top = 125.0
 offset_right = 1100.0
 offset_bottom = 325.0
 
-[node name="Snowcrab" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_vertical = 2
-script = ExtResource("3_h8v2j")
+[node name="AgentScene" parent="VBoxContainer" instance=ExtResource("3_wn4ja")]
+agentType = "snowcrab"
 
-[node name="RiskyThoth" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_vertical = 8
-script = ExtResource("4_3nt74")
+[node name="AgentScene2" parent="VBoxContainer" instance=ExtResource("3_wn4ja")]
+agentType = "thoth"
