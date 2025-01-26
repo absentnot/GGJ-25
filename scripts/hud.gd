@@ -34,7 +34,10 @@ func getOrders(prices: Array[int], daysRemaining: int) -> Array[Order]:
 	var agentOrders = $AgentPanel.getOrders(prices, daysRemaining)
 	agentOrders.push_back(getPlayerOrder())
 	return agentOrders
-	
+
+func getCurrentMoney():
+	return currentMoney
+
 func setAgents(agentTypes:Array[String]) -> void:
 	$AgentPanel.setAgents(agentTypes)
 	
