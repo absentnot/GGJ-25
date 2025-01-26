@@ -29,7 +29,8 @@ func loadRound():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if $Tutorial:
+		$Tutorial.popup()
 
 func _on_day_timer_timeout() -> void:
 	endDay()
@@ -85,5 +86,5 @@ func _nextLevel() -> void:
 
 
 func _on_tutorial_tutorial_end() -> void:
-	$Tutorial.visible = false
+	$Tutorial.queue_free()
 	loadRound()
