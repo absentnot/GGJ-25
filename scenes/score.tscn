@@ -23,3 +23,14 @@ layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="Menu" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+text = "MENU"
+
+[node name="NextRound" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+text = "NEXT"
+
+[connection signal="pressed" from="VBoxContainer/Buttons/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/NextRound" to="." method="_on_next_round_pressed"]

@@ -1,9 +1,10 @@
 extends Node
 
-
+signal nextLevel
 @onready var totalProfit:Label = get_node("VBoxContainer/TotalProfit")
 @onready var totalSharesBought:Label = get_node("VBoxContainer/TotalSharesBought")
 @onready var crabTitleLabel:Label = get_node("VBoxContainer/CrabTitle")
+#var menu = preload("res://scenes/TitleScreen.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,3 +29,10 @@ func display(profit:int, sharesBought: int) -> void:
 	else:
 		crabTitle = "Crabsolute Genius"
 	crabTitleLabel.text = crabTitle
+
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
+
+
+func _on_next_round_pressed() -> void:
+	emit_signal("nextLevel")

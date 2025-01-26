@@ -21,6 +21,12 @@ func getPlayerOrder() -> Order:
 	var nextOrder = Order.new(orderQuantity, playerOrder)
 	_updateCashAndShares(nextOrder)
 	return nextOrder
+
+func reset(days:int) -> void:
+	currentShares = 0
+	currentMoney = 100
+	graph.reset(days)
+	_updateCashAndShares(Order.new(0))
 	
 func getOrders(prices: Array[int], daysRemaining: int) -> Array[Order]:
 	var agentOrders = $AgentPanel.getOrders(prices, daysRemaining)
