@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnhtjauuofwrl"]
+[gd_scene load_steps=9 format=3 uid="uid://cnhtjauuofwrl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
 [ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_hxlur"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_x1c10"]
 [ext_resource type="PackedScene" uid="uid://f5lgc56hlwoh" path="res://scenes/agentPanel.tscn" id="5_6wdav"]
 [ext_resource type="PackedScene" uid="uid://daplwaiaowq6" path="res://scenes/infoTooltip.tscn" id="7_xl5bw"]
+[ext_resource type="AudioStream" uid="uid://cwktd1telb2p" path="res://assets/sfx/wrong.mp3" id="8_bifao"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
@@ -144,6 +145,10 @@ theme_override_constants/separation = 125
 
 [node name="MarketInfoPopup" parent="." instance=ExtResource("7_xl5bw")]
 visible = false
+
+[node name="WrongPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bifao")
+volume_db = -5.0
 
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Sell" to="." method="_on_sell_pressed"]

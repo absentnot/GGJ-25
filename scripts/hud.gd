@@ -146,6 +146,8 @@ func _on_down_pressed() -> void:
 	if(orderQuantity > 0):
 		decrease_share.emit() #sfx
 		_setOrderQuantity(orderQuantity - 1)
+	else:
+		$WrongPlayer.play()
 
 func _on_lock_pressed() -> void:
 	emit_signal("locked")
