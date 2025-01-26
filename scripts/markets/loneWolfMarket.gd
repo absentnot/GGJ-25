@@ -14,3 +14,9 @@ func updatePrice(orders: Array[Order]) -> void:
 		nextPrice = currentPrice * priceSwingAmount
 	prices.push_back(nextPrice)
 	
+
+func getName() -> String:
+	return "Lone Wolf"
+	
+func getDescription() -> String:
+	return "This market will only increase if exactly one trader buys!"

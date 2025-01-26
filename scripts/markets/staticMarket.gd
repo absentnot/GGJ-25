@@ -17,3 +17,9 @@ func updatePrice(orders: Array[Order]) -> void:
 	day +=1
 	if(day<=preDeterminedPrices.size() - 1):
 		prices.push_back(preDeterminedPrices[day])
+
+func getName() -> String:
+	return "Stable Market"
+	
+func getDescription() -> String:
+	return "This market is stable; your puny trades cannot affect it!"

@@ -20,6 +20,7 @@ func loadRound():
 	add_child(currentRound)
 	$HUD.visible = true
 	$HUD.reset(maxDays)
+	$HUD.setMarketDescription(currentRound.getMarketDescription())
 	$HUD.setAgents(currentRound.getAgentTypes())
 	$HUD.setMarketValue(currentRound.getPrices(), maxDays - currDay)
 	$DayTimer.start()
