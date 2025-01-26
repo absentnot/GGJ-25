@@ -1,6 +1,7 @@
 extends Node
 
 signal nextLevel
+signal sameLevel
 @onready var totalProfit:Label = get_node("VBoxContainer/TotalProfit")
 @onready var totalSharesBought:Label = get_node("VBoxContainer/TotalSharesBought")
 @onready var crabTitleLabel:Label = get_node("VBoxContainer/CrabTitle")
@@ -36,3 +37,7 @@ func _on_menu_pressed() -> void:
 
 func _on_next_round_pressed() -> void:
 	emit_signal("nextLevel")
+
+
+func _on_retry_pressed() -> void:
+	emit_signal("sameLevel")

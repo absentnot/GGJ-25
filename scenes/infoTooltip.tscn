@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://daplwaiaowq6"]
+[gd_scene load_steps=3 format=3 uid="uid://daplwaiaowq6"]
 
-[ext_resource type="Script" path="res://scripts/agentInfoTooltip.gd" id="1_2sexq"]
+[ext_resource type="Script" path="res://scripts/infoTooltip.gd" id="1_2sexq"]
+[ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_yn8pu"]
 
 [node name="AgentInfoTooltip" type="PopupPanel"]
 visible = true
@@ -14,3 +15,4 @@ offset_bottom = 96.0
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yn8pu")
