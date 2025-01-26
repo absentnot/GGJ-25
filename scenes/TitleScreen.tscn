@@ -1,13 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://7x43idvwc0tm"]
+[gd_scene load_steps=9 format=3 uid="uid://7x43idvwc0tm"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_o1wpw"]
-[ext_resource type="Texture2D" uid="uid://b0jlwh15yf8bb" path="res://assets/Titlebackground.png" id="2_kwrsj"]
 [ext_resource type="PackedScene" uid="uid://b7niqv1ajes70" path="res://scenes/LevelSelect.tscn" id="2_v64ue"]
-[ext_resource type="FontFile" uid="uid://codq4x8xbumx0" path="res://assets/AguDisplay-Regular-VariableFont_MORF.ttf" id="4_quk51"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_je78g"]
-texture = ExtResource("2_kwrsj")
-modulate_color = Color(0.847474, 0.847474, 0.847474, 1)
+[ext_resource type="PackedScene" path="res://scenes/environment.tscn" id="3_cshli"]
+[ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="4_6nnm3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bser5"]
 
@@ -36,6 +32,7 @@ corner_radius_bottom_left = 22
 shadow_size = 4
 
 [node name="TitleScreen" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,56 +42,43 @@ grow_vertical = 2
 script = ExtResource("1_o1wpw")
 level_scene = ExtResource("2_v64ue")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Environment" parent="." instance=ExtResource("3_cshli")]
+layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_je78g")
 
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -207.0
-offset_top = 89.0
-offset_right = 207.0
-offset_bottom = 208.0
-grow_horizontal = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 8
-theme_override_fonts/font = ExtResource("4_quk51")
+theme_override_fonts/font = ExtResource("4_6nnm3")
 theme_override_font_sizes/font_size = 85
 text = "Economy Bubble"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -136.0
-offset_top = -109.5
-offset_right = 136.0
-offset_bottom = 109.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 8
-
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/h_separation = 8
+theme_override_fonts/font = ExtResource("4_6nnm3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bser5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cavkw")
@@ -102,14 +86,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_x3blv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rulp1")
 text = "Start game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/h_separation = 8
+theme_override_fonts/font = ExtResource("4_6nnm3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bser5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cavkw")
@@ -122,13 +109,13 @@ text = "Volume"
 [node name="VolumeSlider" type="HSlider" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 811.0
-offset_top = 354.0
-offset_right = 986.0
-offset_bottom = 370.0
+offset_left = 620.0
+offset_top = 321.0
+offset_right = 795.0
+offset_bottom = 337.0
 min_value = -30.0
 max_value = 0.0
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_settings_pressed"]
 [connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]
