@@ -1,11 +1,11 @@
 [gd_scene load_steps=22 format=3 uid="uid://bt0convd558f"]
 
 [ext_resource type="Script" path="res://environment.gd" id="1_twupc"]
-[ext_resource type="Material" uid="uid://cb3rk3i1ls2bw" path="res://shaders/waveMat.tres" id="1_ytdo2"]
+[ext_resource type="Material" uid="uid://b2fgksyiqmcoj" path="res://shaders/waveMat.tres" id="1_ytdo2"]
 [ext_resource type="Texture2D" uid="uid://dlp6c5a4kwtc4" path="res://assets/art/GAME-BG-bg.png" id="2_5q4pg"]
 [ext_resource type="Texture2D" uid="uid://bep0evl4esev6" path="res://assets/art/GAME-BG-bgrocks.png" id="3_qebtf"]
 [ext_resource type="Texture2D" uid="uid://bffdc3thct40h" path="res://assets/art/GAME-BG-foreground.png" id="4_p1u4a"]
-[ext_resource type="Material" uid="uid://duvef3kdywa2r" path="res://shaders/logo-wobble-mat.tres" id="5_dkt7s"]
+[ext_resource type="Material" uid="uid://did3h0bqya2o" path="res://shaders/logo-wobble-mat.tres" id="5_dkt7s"]
 [ext_resource type="Texture2D" uid="uid://buf6q3ke4wbfe" path="res://assets/art/GAME-BG-SEAWEEED3.png" id="6_sroyr"]
 [ext_resource type="Shader" path="res://shaders/wobble.gdshader" id="7_fx665"]
 [ext_resource type="Texture2D" uid="uid://bsixid2qg8nu0" path="res://assets/art/GAME-BG-SEAWEEED2.png" id="8_0wofj"]

@@ -31,12 +31,15 @@ func reset(days:int) -> void:
 	_updateCashAndShares(Order.new(0))
 	
 func getOrders(prices: Array[int], daysRemaining: int) -> Array[Order]:
-	var agentOrders = $AgentPanel.getOrders(prices, daysRemaining)
+	var agentOrders = $AgentPanelL.getOrders(prices, daysRemaining)
+	agentOrders.push_back($AgentPanelR.getOrders(prices, daysRemaining))
+	
 	agentOrders.push_back(getPlayerOrder())
 	return agentOrders
 	
 func setAgents(agentTypes:Array[String]) -> void:
-	$AgentPanel.setAgents(agentTypes)
+	$AgentPanelL.setAgents(agentTypes.slice(0, ceil(len(agentTypes)/2)))
+	$AgentPanelR.setAgents(agentTypes.slice(ceil(len(agentTypes)/2), len(agentTypes)))
 	
 func setMarketValue(prices: Array[int], daysRemaining: int) -> void:
 	var newVal = prices[prices.size()-1]

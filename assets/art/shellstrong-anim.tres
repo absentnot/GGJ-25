@@ -1,0 +1,17 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://dd8u5y3habody"]
+
+[ext_resource type="Texture2D" uid="uid://2pk226l2npct" path="res://assets/art/senator-idle1.png" id="1_31igr"]
+[ext_resource type="Texture2D" uid="uid://dxmcja2wuhbgg" path="res://assets/art/senator-idle2.png" id="2_w0oa6"]
+[ext_resource type="Texture2D" uid="uid://dwdj3umoum3nq" path="res://assets/art/senator-idle3.png" id="3_tdmhc"]
+[ext_resource type="Texture2D" uid="uid://crw4q4mq56hmv" path="res://assets/art/senator-idle4.png" id="4_hflcx"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_31igr")
+frame_0/duration = 1.75
+frame_1/texture = ExtResource("2_w0oa6")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("3_tdmhc")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("4_hflcx")
+frame_3/duration = 0.1

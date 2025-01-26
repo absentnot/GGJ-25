@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnhtjauuofwrl"]
+[gd_scene load_steps=10 format=3 uid="uid://cnhtjauuofwrl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
 [ext_resource type="PackedScene" uid="uid://bt0convd558f" path="res://scenes/environment.tscn" id="2_2qoas"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_x1c10"]
 [ext_resource type="Texture2D" uid="uid://bvfc28td2a8f2" path="res://assets/art/HUD-BORDER-FRAME.png" id="3_vpesy"]
 [ext_resource type="PackedScene" uid="uid://f5lgc56hlwoh" path="res://scenes/agentPanel.tscn" id="5_6wdav"]
+[ext_resource type="PackedScene" uid="uid://bk1wwxoeojduc" path="res://scenes/player_crab.tscn" id="9_2vhcv"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
@@ -168,16 +169,37 @@ MAX_WIDTH = 465
 opaqueGrey = Color(0.207843, 0.270588, 0.376471, 1)
 veryOpaqueGrey = Color(0.164706, 0.211765, 0.294118, 1)
 
-[node name="AgentPanel" parent="." instance=ExtResource("5_6wdav")]
+[node name="AgentPanelL" parent="." instance=ExtResource("5_6wdav")]
 texture_filter = 1
-custom_minimum_size = Vector2(250, 250)
-anchors_preset = 11
-anchor_left = 1.0
-offset_left = -250.0
-offset_bottom = -139.0
-grow_horizontal = 0
+custom_minimum_size = Vector2(200, 400)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 200.0
+offset_bottom = 400.0
+grow_horizontal = 1
+grow_vertical = 1
 size_flags_horizontal = 8
 theme_override_constants/separation = 125
+
+[node name="AgentPanelR" parent="." instance=ExtResource("5_6wdav")]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 400)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -200.0
+offset_bottom = 400.0
+grow_horizontal = 0
+grow_vertical = 1
+size_flags_horizontal = 8
+theme_override_constants/separation = 125
+
+[node name="PlayerCrab" parent="." instance=ExtResource("9_2vhcv")]
+offset_left = 28.0
+offset_top = 353.0
+offset_right = -932.0
+offset_bottom = -187.0
 
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Sell" to="." method="_on_sell_pressed"]

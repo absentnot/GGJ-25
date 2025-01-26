@@ -1,0 +1,17 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://d2yh6bgsohcbe"]
+
+[ext_resource type="Texture2D" uid="uid://cobin4o222clk" path="res://assets/art/gretchenn-idle1.png" id="1_niqin"]
+[ext_resource type="Texture2D" uid="uid://cjs65om88bu3h" path="res://assets/art/gretchenn-idle2.png" id="2_dj5f3"]
+[ext_resource type="Texture2D" uid="uid://ds3afibktpnc3" path="res://assets/art/gretchenn-idle3.png" id="3_o1xg4"]
+[ext_resource type="Texture2D" uid="uid://ddwhh1m16ka34" path="res://assets/art/gretchenn-idle4.png" id="4_gxpwy"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_niqin")
+frame_0/duration = 1.5
+frame_1/texture = ExtResource("2_dj5f3")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("3_o1xg4")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("4_gxpwy")
+frame_3/duration = 0.1

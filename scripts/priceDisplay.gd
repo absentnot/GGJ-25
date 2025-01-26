@@ -51,7 +51,8 @@ func addPoint(newMarketPrice: int) -> void:
 	points.push_back(newPoint)
 	var label = Label.new()
 	label.add_theme_font_override("font", font)
-	label.set_position(Vector2(prevPoint.x + widthStep,MAX_HEIGHT + 2))
+	label.set_position(Vector2(prevPoint.x + widthStep - 7.0,MAX_HEIGHT + 2))
+	label.z_index = 2
 	label.text = str(newMarketPrice)
 	add_child(label)
 	queue_redraw()
