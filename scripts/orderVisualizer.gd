@@ -3,9 +3,9 @@ extends TextureRect
 class_name OrderVisualizer
 
 
-var hold: Texture = preload("res://assets/hold.png")
-var sell: Texture = preload("res://assets/sell.png")
-var buy: Texture= preload("res://assets/buy.png")
+var hold: Texture = preload("res://assets/art/hold.png")
+var sell: Texture = preload("res://assets/art/sell.png")
+var buy: Texture= preload("res://assets/art/buy.png")
 var sprite: TextureRect
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
