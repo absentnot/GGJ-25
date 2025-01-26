@@ -6,10 +6,16 @@ var market: Market
 var agents: Array[Agent]
 @export var agentTypes: Array[String]
 @export var maxDays = 5
+signal roundStart
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	market = get_tree().get_nodes_in_group("MarketGroup")[0]
 	day = 0
+	
+	var sfxManager = get_tree().get_root().get_node_or_null('SFXManager')
+	if sfxManager:
+		roundStart.connect(sfxManager._on_round_start)
+		roundStart.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
