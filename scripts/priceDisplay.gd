@@ -16,6 +16,7 @@ var black = Color.BLACK
 @export var veryOpaqueGrey =  Color(0.827451, 0.827451, 0.827451, .2)
 var red = Color.RED
 var green = Color.GREEN
+var font: Font = load("res://assets/Hefty Me.ttf")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	points = []
@@ -49,9 +50,9 @@ func addPoint(newMarketPrice: int) -> void:
 	var newPoint = Vector2(prevPoint.x + widthStep,MAX_HEIGHT - rescaledY)
 	points.push_back(newPoint)
 	var label = Label.new()
-	label.add_theme_font_override("font", load("res://assets/Hefty Me.ttf"))
+	label.add_theme_font_override("font", font)
+	label.set_position(Vector2(prevPoint.x + widthStep,MAX_HEIGHT + 2))
 	label.text = str(newMarketPrice)
-	label.set_position(Vector2(prevPoint.x + widthStep,MAX_HEIGHT + 10))
 	add_child(label)
 	queue_redraw()
 

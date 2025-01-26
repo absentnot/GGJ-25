@@ -63,6 +63,7 @@ size_flags_horizontal = 4
 
 [node name="PlayerActionsVBox" type="VBoxContainer" parent="PlayerActionsHBox"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="Buy" type="Button" parent="PlayerActionsHBox/PlayerActionsVBox"]
 layout_mode = 2
@@ -87,12 +88,29 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("2_x1c10")
 text = "HOLD"
 
-[node name="QuantityInput" type="LineEdit" parent="PlayerActionsHBox"]
-custom_minimum_size = Vector2(50, 50)
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerActionsHBox"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Up" type="Button" parent="PlayerActionsHBox/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x1c10")
-placeholder_text = "Amt"
+text = "UP"
+
+[node name="Down" type="Button" parent="PlayerActionsHBox/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
+text = "DOWN"
+
+[node name="Lock" type="Button" parent="PlayerActionsHBox/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
+text = "Lock!"
+
+[node name="NextOrderDisplay" type="Label" parent="PlayerActionsHBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
+text = "0"
 
 [node name="OrderVisualizer" type="TextureRect" parent="PlayerActionsHBox"]
 layout_mode = 2
@@ -164,4 +182,6 @@ theme_override_constants/separation = 125
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Hold" to="." method="_on_hold_pressed"]
-[connection signal="text_submitted" from="PlayerActionsHBox/QuantityInput" to="." method="_on_quantity_input_text_submitted"]
+[connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Lock" to="." method="_on_lock_pressed"]
