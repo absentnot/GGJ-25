@@ -4,7 +4,7 @@ var directionLeft: bool = true
 var move_speed = 150.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position.y = randi_range(150, 375)
+	position.y = randi_range(150, 330)
 	z_index = randi_range(0, 4)
 	
 	var randomizedScale = randf_range(0.8,1.2) * (z_index + 3.0) / 4.5 
