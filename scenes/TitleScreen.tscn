@@ -59,12 +59,13 @@ theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 8
 theme_override_fonts/font = ExtResource("4_6nnm3")
-theme_override_font_sizes/font_size = 85
-text = "Economy Bubble"
+theme_override_font_sizes/font_size = 128
+text = "Bubble Brokers"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -109,10 +110,10 @@ text = "Volume"
 [node name="VolumeSlider" type="HSlider" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 620.0
-offset_top = 321.0
-offset_right = 795.0
-offset_bottom = 337.0
+offset_left = 618.0
+offset_top = 369.0
+offset_right = 793.0
+offset_bottom = 385.0
 min_value = -30.0
 max_value = 0.0
 

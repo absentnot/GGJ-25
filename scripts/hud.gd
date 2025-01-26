@@ -30,7 +30,7 @@ func _ready() -> void:
 		$PlayerActionsHBox/PlayerActionsVBox/Hold.mouse_entered.connect(sfxManager._on_button_hovered)
 		$PlayerActionsHBox/VBoxContainer/Up.mouse_entered.connect(sfxManager._on_button_hovered)
 		$PlayerActionsHBox/VBoxContainer/Down.mouse_entered.connect(sfxManager._on_button_hovered)
-		$PlayerActionsHBox/VBoxContainer/Lock.mouse_entered.connect(sfxManager._on_button_hovered)
+		$PlayerActionsHBox/Lock.mouse_entered.connect(sfxManager._on_button_hovered)
 		
 		#specific sfx
 		increase_share.connect(sfxManager._on_share_increase)
@@ -38,7 +38,7 @@ func _ready() -> void:
 		$PlayerActionsHBox/PlayerActionsVBox/Buy.pressed.connect(sfxManager._on_confirm_buy_or_sell)
 		$PlayerActionsHBox/PlayerActionsVBox/Sell.pressed.connect(sfxManager._on_confirm_buy_or_sell)
 		$PlayerActionsHBox/PlayerActionsVBox/Hold.pressed.connect(sfxManager._on_confirm_hold)
-		$PlayerActionsHBox/VBoxContainer/Lock.pressed.connect(sfxManager._on_cash_out)
+		$PlayerActionsHBox/Lock.pressed.connect(sfxManager._on_cash_out)
 		
 	
 
