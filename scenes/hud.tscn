@@ -1,20 +1,17 @@
 [gd_scene load_steps=10 format=3 uid="uid://cnhtjauuofwrl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
-[ext_resource type="PackedScene" uid="uid://bt0convd558f" path="res://scenes/environment.tscn" id="2_2qoas"]
 [ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_hxlur"]
 [ext_resource type="Script" path="res://scripts/priceDisplay.gd" id="2_jefl5"]
 [ext_resource type="Texture2D" uid="uid://dqgeq3quoxin" path="res://assets/art/hold.png" id="2_lym6x"]
 [ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_x1c10"]
 [ext_resource type="Texture2D" uid="uid://bvfc28td2a8f2" path="res://assets/art/HUD-BORDER-FRAME.png" id="3_vpesy"]
 [ext_resource type="PackedScene" uid="uid://f5lgc56hlwoh" path="res://scenes/agentPanel.tscn" id="5_6wdav"]
+[ext_resource type="PackedScene" uid="uid://daplwaiaowq6" path="res://scenes/infoTooltip.tscn" id="7_xl5bw"]
 [ext_resource type="PackedScene" uid="uid://bk1wwxoeojduc" path="res://scenes/player_crab.tscn" id="9_2vhcv"]
-[ext_resource type="PackedScene" path="res://scenes/infoTooltip.tscn" id="7_xl5bw"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
-
-[node name="Environment" parent="." instance=ExtResource("2_2qoas")]
 
 [node name="GameUI" type="CenterContainer" parent="."]
 texture_filter = 1
@@ -208,6 +205,7 @@ offset_left = 28.0
 offset_top = 353.0
 offset_right = -932.0
 offset_bottom = -187.0
+
 [node name="MarketInfoPopup" parent="." instance=ExtResource("7_xl5bw")]
 visible = false
 

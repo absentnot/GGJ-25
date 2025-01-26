@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkn1c4ra3b6nd"]
+[gd_scene load_steps=5 format=3 uid="uid://dkn1c4ra3b6nd"]
 
 [ext_resource type="Script" path="res://scripts/agent.gd" id="1_cbt82"]
-[ext_resource type="Texture2D" uid="uid://cxrsx0xik5xb2" path="res://assets/art/player-idle-anim.tres" id="2_1uhjq"]
 [ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_ghu80"]
-[ext_resource type="PackedScene" uid="uid://daplwaiaowq6" path="res://scenes/agentInfoTooltip.tscn" id="3_8fasv"]
+[ext_resource type="PackedScene" uid="uid://daplwaiaowq6" path="res://scenes/infoTooltip.tscn" id="3_8fasv"]
 [ext_resource type="Texture2D" uid="uid://b3fxebvy15rhk" path="res://assets/art/sell.png" id="3_lnxum"]
 
 [node name="AgentScene" type="Control"]
@@ -11,13 +10,11 @@ texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_cbt82")
-agentType = "senator"
 
 [node name="AgentCrab" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1.0
 offset_bottom = 1.0
-texture = ExtResource("2_1uhjq")
 
 [node name="OrderVisualizer" type="TextureRect" parent="."]
 layout_mode = 0
@@ -29,6 +26,7 @@ texture = ExtResource("3_lnxum")
 expand_mode = 2
 script = ExtResource("2_ghu80")
 
-[node name="AgentInfoTooltip" parent="." instance=ExtResource("3_v44cj")]
+[node name="AgentInfoTooltip" parent="." instance=ExtResource("3_8fasv")]
+visible = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
