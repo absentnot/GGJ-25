@@ -19,7 +19,7 @@ func getAgentsOrNot():
 			return "true"
 		else:
 			return "false"
-	return "true"
+	return "false"
 
 func isMoneyZero():
 	var root = get_tree().get_root()

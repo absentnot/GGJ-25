@@ -15,9 +15,32 @@ var initialMoney:int = 100
 @onready var playerSharesDisplay = get_node("PlayerStats/PlayerSharesDisplay")
 @onready var orderVisualizer = get_node("PlayerActionsHBox/OrderVisualizer")
 @onready var nextOrderDisplay = get_node("PlayerActionsHBox/NextOrderDisplay")
+
+signal increase_share
+signal decrease_share
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_updateCashAndShares(Order.new(0))
+	var sfxManager = get_tree().get_root().get_node_or_null('SFXManager')
+	if sfxManager:
+		#button hover sfx
+		$PlayerActionsHBox/PlayerActionsVBox/Buy.mouse_entered.connect(sfxManager._on_button_hovered)
+		$PlayerActionsHBox/PlayerActionsVBox/Sell.mouse_entered.connect(sfxManager._on_button_hovered)
+		$PlayerActionsHBox/PlayerActionsVBox/Hold.mouse_entered.connect(sfxManager._on_button_hovered)
+		$PlayerActionsHBox/VBoxContainer/Up.mouse_entered.connect(sfxManager._on_button_hovered)
+		$PlayerActionsHBox/VBoxContainer/Down.mouse_entered.connect(sfxManager._on_button_hovered)
+		$PlayerActionsHBox/VBoxContainer/Lock.mouse_entered.connect(sfxManager._on_button_hovered)
+		
+		#specific sfx
+		increase_share.connect(sfxManager._on_share_increase)
+		decrease_share.connect(sfxManager._on_share_decrease)
+		$PlayerActionsHBox/PlayerActionsVBox/Buy.pressed.connect(sfxManager._on_confirm_buy_or_sell)
+		$PlayerActionsHBox/PlayerActionsVBox/Sell.pressed.connect(sfxManager._on_confirm_buy_or_sell)
+		$PlayerActionsHBox/PlayerActionsVBox/Hold.pressed.connect(sfxManager._on_confirm_hold)
+		$PlayerActionsHBox/VBoxContainer/Lock.pressed.connect(sfxManager._on_cash_out)
+		
+	
 
 func getPlayerOrder() -> Order:
 	print("Player quantity: " + str(orderQuantity))
@@ -116,9 +139,11 @@ func _setOrderQuantity(quantity:int) -> void:
 	nextOrderDisplay.text = str(orderQuantity)
 	
 func _on_up_pressed() -> void:
+	increase_share.emit() #sfx
 	_setOrderQuantity(orderQuantity + 1)
 
 func _on_down_pressed() -> void:
+	decrease_share.emit() #sfx
 	_setOrderQuantity(orderQuantity - 1)
 
 func _on_lock_pressed() -> void:
