@@ -1,36 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://bym64clfq2d8g"]
+[gd_scene load_steps=3 format=3 uid="uid://bym64clfq2d8g"]
 
 [ext_resource type="Script" path="res://scripts/score.gd" id="1_6p3vg"]
+[ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_67woj"]
 
-[node name="Score" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="Score" type="CanvasLayer"]
 script = ExtResource("1_6p3vg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -38.0
+offset_right = 62.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TotalProfit" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_67woj")
 
 [node name="TotalSharesBought" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_67woj")
 
 [node name="CrabTitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_67woj")
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="Menu" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_67woj")
 text = "MENU"
 
 [node name="NextRound" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_67woj")
 text = "NEXT"
+
+[node name="Retry" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_67woj")
+text = "RETRY"
 
 [connection signal="pressed" from="VBoxContainer/Buttons/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/NextRound" to="." method="_on_next_round_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Retry" to="." method="_on_retry_pressed"]

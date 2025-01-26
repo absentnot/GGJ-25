@@ -18,6 +18,9 @@ func _process(delta: float) -> void:
 func getMarketValue() -> int:
 	return market.getCurrentPrice()
 
+func getMarketDescription() -> Array[String]:
+	return [market.getName(), market.getDescription()]
+
 func getAgentTypes() -> Array[String]:
 	return agentTypes
 

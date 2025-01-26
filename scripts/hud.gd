@@ -9,7 +9,8 @@ var marketVal: int = 0
 var totalSharesBought:int = 0
 var initialMoney:int = 100
 @onready var graph = get_node("MarketVbox/Graph")
-@onready var marketValueDisplay = get_node("MarketVbox/MarketValueDisplay")
+@onready var marketValueDisplay = get_node("MarketVbox/MarketInfo/MarketValue")
+@onready var marketNameDisplay = get_node("MarketVbox/MarketInfo/MarketName")
 @onready var playerCashDisplay = get_node("PlayerStats/PlayerCashDisplay")
 @onready var playerSharesDisplay = get_node("PlayerStats/PlayerSharesDisplay")
 @onready var orderVisualizer = get_node("PlayerActionsHBox/OrderVisualizer")
@@ -48,6 +49,10 @@ func setMarketValue(prices: Array[int], daysRemaining: int) -> void:
 	if(daysRemaining >= 0):
 		graph.addPoint(newVal)
 		getOrders(prices, daysRemaining)
+		
+func setMarketDescription(marketInfo: Array[String]) -> void:
+	marketNameDisplay.text = marketInfo[0]
+	$MarketInfoPopup.showInfo(marketInfo[1])
 
 func getFinalStats() -> Array[int]:
 	liquidate()
@@ -116,6 +121,10 @@ func _on_up_pressed() -> void:
 func _on_down_pressed() -> void:
 	_setOrderQuantity(orderQuantity - 1)
 
-
 func _on_lock_pressed() -> void:
 	emit_signal("locked")
+
+func _on_market_info_mouse_entered() -> void:
+	print("MOUSE ENTERED ON MINFO")
+	$MarketInfoPopup.position = Vector2(marketNameDisplay.position)
+	$MarketInfoPopup.popup()

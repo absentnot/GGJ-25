@@ -21,3 +21,10 @@ func updatePrice(orders: Array[Order]) -> void:
 		nextPrice = round(currentPrice / priceSwingAmount)
 	prices.push_back(nextPrice)
 	
+
+func getName() -> String:
+	return "Peer Pressure"
+	
+func getDescription() -> String:
+	return "This market will swing heavily towards the direction most traders are moving"
+	

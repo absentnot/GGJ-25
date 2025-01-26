@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/agent.gd" id="1_cbt82"]
 [ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_ghu80"]
-[ext_resource type="PackedScene" uid="uid://daplwaiaowq6" path="res://scenes/agentInfoTooltip.tscn" id="3_8fasv"]
+[ext_resource type="PackedScene" uid="uid://daplwaiaowq6" path="res://scenes/infoTooltip.tscn" id="3_8fasv"]
 
 [node name="AgentScene" type="Control"]
 layout_mode = 3

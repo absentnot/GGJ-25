@@ -18,3 +18,8 @@ func updatePrice(orders: Array[Order]) -> void:
 func getPrices() -> Array[int]:
 	return prices
 	
+func getName() -> String:
+	return ""
+func getDescription() -> String:
+	return ""
+	
