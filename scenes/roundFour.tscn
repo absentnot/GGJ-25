@@ -1,20 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckph4yid4yec1"]
+[gd_scene load_steps=3 format=3 uid="uid://ckph4yid4yec1"]
 
 [ext_resource type="Script" path="res://scripts/round.gd" id="1_qrgtn"]
 [ext_resource type="Script" path="res://scripts/markets/peerPressureMarket.gd" id="2_bchnv"]
-[ext_resource type="PackedScene" uid="uid://dkn1c4ra3b6nd" path="res://scenes/agentScene.tscn" id="3_u4nvp"]
 
 [node name="RoundFour" type="Node2D"]
 script = ExtResource("1_qrgtn")
+agentTypes = Array[String](["snowcrab"])
 
 [node name="PeerPressureMarket" type="Node2D" parent="." groups=["MarketGroup"]]
 script = ExtResource("2_bchnv")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 950.0
-offset_top = 125.0
-offset_right = 1100.0
-offset_bottom = 425.0
-
-[node name="AgentScene" parent="VBoxContainer" instance=ExtResource("3_u4nvp")]
-agentType = "snowcrab"

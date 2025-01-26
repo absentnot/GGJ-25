@@ -19,11 +19,21 @@ func getPlayerOrder() -> Order:
 	var nextOrder = Order.new(orderQuantity, playerOrder)
 	_updateCashAndShares(nextOrder)
 	return nextOrder
-
-func setMarketValue(newVal: int) -> void:
+	
+func getOrders(prices: Array[int], daysRemaining: int) -> Array[Order]:
+	var agentOrders = $AgentPanel.getOrders(prices, daysRemaining)
+	agentOrders.push_back(getPlayerOrder())
+	return agentOrders
+	
+func setAgents(agentTypes:Array[String]) -> void:
+	$AgentPanel.setAgents(agentTypes)
+	
+func setMarketValue(prices: Array[int], daysRemaining: int) -> void:
+	var newVal = prices[prices.size()-1]
 	marketVal = newVal
 	marketValueDisplay.text = str(marketVal)
 	graph.addPoint(newVal)
+	getOrders(prices, daysRemaining)
 	
 func _updateCashAndShares(nextOrder: Order) -> void:
 	match nextOrder.type:

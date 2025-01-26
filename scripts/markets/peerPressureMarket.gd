@@ -3,11 +3,12 @@ extends Market
 var priceSwingAmount = 1.5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	currentPrice = 50
+	prices = [50]
 
 # If more than half of the agents buy or sell, price goes up or down, respectively.
 func updatePrice(orders: Array[Order]) -> void:
 	var triggerNumber = orders.size() / 2
+	var currentPrice = prices[prices.size()-1]
 	var nextPrice = currentPrice
 	# If there's an odd number of agents, round up.
 	if(orders.size()%2==1):
@@ -18,6 +19,5 @@ func updatePrice(orders: Array[Order]) -> void:
 	var sellOrders = orders.filter(func(order:Order): return order.type == Order.OrderType.SELL).size()
 	if(sellOrders >= triggerNumber):
 		nextPrice = currentPrice / priceSwingAmount
-	previousPrices.push_back(currentPrice)
-	currentPrice = nextPrice
+	prices.push_back(nextPrice)
 	
