@@ -18,3 +18,14 @@ func updatePrice(orders: Array[Order]) -> void:
 func getPrices() -> Array[int]:
 	return prices
 	
+func _fluctuate() -> int:
+	var currentPrice = prices[prices.size()-1]
+	var delta = randi_range(-5, 15)
+	var newPrice = max(0, currentPrice + delta)
+	return newPrice
+	
+func getName() -> String:
+	return ""
+func getDescription() -> String:
+	return ""
+	

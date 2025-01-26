@@ -16,11 +16,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_timer_timeout():
 	$Timer.wait_time = randf_range(spawnTimeRangeMin, spawnTimeRangeMax)
 	var fish = load("res://scenes/fish.tscn").instantiate()

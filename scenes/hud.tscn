@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bvfc28td2a8f2" path="res://assets/art/HUD-BORDER-FRAME.png" id="3_vpesy"]
 [ext_resource type="PackedScene" uid="uid://f5lgc56hlwoh" path="res://scenes/agentPanel.tscn" id="5_6wdav"]
 [ext_resource type="PackedScene" uid="uid://bk1wwxoeojduc" path="res://scenes/player_crab.tscn" id="9_2vhcv"]
+[ext_resource type="PackedScene" path="res://scenes/infoTooltip.tscn" id="7_xl5bw"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
@@ -150,7 +151,14 @@ grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="MarketValueDisplay" type="Label" parent="MarketVbox"]
+[node name="MarketInfo" type="HBoxContainer" parent="MarketVbox"]
+layout_mode = 2
+
+[node name="MarketName" type="Label" parent="MarketVbox/MarketInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x1c10")
+
+[node name="MarketValue" type="Label" parent="MarketVbox/MarketInfo"]
 z_index = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -200,6 +208,8 @@ offset_left = 28.0
 offset_top = 353.0
 offset_right = -932.0
 offset_bottom = -187.0
+[node name="MarketInfoPopup" parent="." instance=ExtResource("7_xl5bw")]
+visible = false
 
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Sell" to="." method="_on_sell_pressed"]
@@ -207,3 +217,4 @@ offset_bottom = -187.0
 [connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Up" to="." method="_on_up_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Down" to="." method="_on_down_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/VBoxContainer/Lock" to="." method="_on_lock_pressed"]
+[connection signal="mouse_entered" from="MarketVbox/MarketInfo" to="." method="_on_market_info_mouse_entered"]

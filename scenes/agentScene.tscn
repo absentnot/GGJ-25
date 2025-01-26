@@ -29,7 +29,6 @@ texture = ExtResource("3_lnxum")
 expand_mode = 2
 script = ExtResource("2_ghu80")
 
-[node name="AgentInfoTooltip" parent="." instance=ExtResource("3_8fasv")]
-visible = false
+[node name="AgentInfoTooltip" parent="." instance=ExtResource("3_v44cj")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

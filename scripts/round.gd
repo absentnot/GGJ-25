@@ -18,11 +18,17 @@ func _process(delta: float) -> void:
 func getMarketValue() -> int:
 	return market.getCurrentPrice()
 
+func getMarketDescription() -> Array[String]:
+	return [market.getName(), market.getDescription()]
+
 func getAgentTypes() -> Array[String]:
 	return agentTypes
 
 func getMaxDays() -> int:
 	return maxDays
+
+func isLastDay() -> bool:
+	return day == maxDays
 
 func processDay(orders: Array[Order]) -> void:
 	day += 1

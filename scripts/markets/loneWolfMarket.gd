@@ -9,8 +9,14 @@ func _ready() -> void:
 func updatePrice(orders: Array[Order]) -> void:
 	var buyOrders = orders.filter(func(order:Order): return order.type == Order.OrderType.BUY).size()
 	var currentPrice = prices[prices.size()-1]
-	var nextPrice = currentPrice
+	var nextPrice = _fluctuate()
 	if(buyOrders == 1):
 		nextPrice = currentPrice * priceSwingAmount
 	prices.push_back(nextPrice)
 	
+
+func getName() -> String:
+	return "Lone Wolf"
+	
+func getDescription() -> String:
+	return "This market will only increase if exactly one trader buys!"
