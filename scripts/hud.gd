@@ -114,8 +114,10 @@ func _setOrderType(nextOrderType: Order.OrderType) -> void:
 func _on_sell_pressed() -> void:
 	print("Sell is pressed!")
 	if(orderQuantity < 1):
+		$WrongPlayer.play()
 		print("Stupid player, you can't sell less than 1 share!")
 	elif(orderQuantity > currentShares):
+		$WrongPlayer.play()
 		print("You don't have that many shares!")
 	else:
 		_setOrderType(Order.OrderType.SELL)
@@ -124,11 +126,14 @@ func _on_buy_pressed() -> void:
 	print("Buy is pressed!")
 	var price = orderQuantity * marketVal
 	if(orderQuantity < 1):
+		$WrongPlayer.play()
 		print("Stupid player, you can't buy less than 1 share!")
 	elif(price > currentMoney):
+		$WrongPlayer.play()
 		print("You can't afford that!")
 	else:
 		_setOrderType(Order.OrderType.BUY)
+		
 
 func _on_hold_pressed() -> void:
 	print("Hold is pressed!")
