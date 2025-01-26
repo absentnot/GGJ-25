@@ -32,8 +32,9 @@ func setMarketValue(prices: Array[int], daysRemaining: int) -> void:
 	var newVal = prices[prices.size()-1]
 	marketVal = newVal
 	marketValueDisplay.text = str(marketVal)
-	graph.addPoint(newVal)
-	getOrders(prices, daysRemaining)
+	if(daysRemaining >= 0):
+		graph.addPoint(newVal)
+		getOrders(prices, daysRemaining)
 	
 func _updateCashAndShares(nextOrder: Order) -> void:
 	match nextOrder.type:

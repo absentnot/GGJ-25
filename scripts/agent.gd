@@ -32,7 +32,8 @@ func decide(prices: Array[int], daysRemaining: int) -> Order:
 			nextOrder =  _shellstrongDecide(daysRemaining)
 		"snowcrab":
 			nextOrder =  _snowcrabDecide()
-	nextOrder = Order.new(0)
+		_:
+			nextOrder = Order.new(0)
 	$OrderVisualizer.updateOrder(nextOrder.type)
 	return nextOrder
 
@@ -56,8 +57,9 @@ func _gretchenDecide(prices: Array[int]) -> Order:
 	return Order.new(0)
 	
 func _shellstrongDecide(daysRemaining: int) -> Order:
-	print("Shellstronging!")
+	print("Shellstronging! %d " % daysRemaining)
 	if daysRemaining == 0:
+		print("Shellstorng says buy!")
 		return Order.new(10, Order.OrderType.BUY)
 	return Order.new(0)
 	
