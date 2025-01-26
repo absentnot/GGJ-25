@@ -65,3 +65,24 @@ func _shellstrongDecide(daysRemaining: int) -> Order:
 	
 func _snowcrabDecide() -> Order:
 	return Order.new(10, Order.OrderType.SELL)
+
+
+func _on_mouse_entered() -> void:
+	$AgentInfoTooltip.position = Vector2(get_global_mouse_position())
+	$AgentInfoTooltip.showInfo(getAgentInfo())
+	$AgentInfoTooltip.popup()
+	
+func getAgentInfo() -> String:
+	var info: String
+	match agentType:
+		"thoth":
+			info =  "Risky Thoth buys on sharp price drops."
+		"gretchen":
+			info =  "Gretchen buys every even tick. Stupid."
+		"shellstrong":
+			info =  "Senator Shellstrong buys at the very last second."
+		"snowcrab":
+			info =  "Snowcrab never buys! SELL SELL SELL!"
+		_:
+			info = "You have discovered the rare ghost crab!"
+	return info
