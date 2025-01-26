@@ -13,7 +13,8 @@ func loadRound():
 	if(resultScreen != null):
 		resultScreen.queue_free()
 	print("res://scenes/%s.tscn" % Global.level)
-	currentRound = load("res://scenes/%s.tscn" % Global.level).instantiate()
+	#currentRound = load("res://scenes/%s.tscn" % Global.level).instantiate()
+	currentRound = load("res://scenes/roundFour.tscn").instantiate()
 	currentRound.roundOver.connect(endRound)
 	maxDays = currentRound.getMaxDays()
 	currDay = 0

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqgeq3quoxin" path="res://assets/art/hold.png" id="2_lym6x"]
 [ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_x1c10"]
 [ext_resource type="PackedScene" uid="uid://f5lgc56hlwoh" path="res://scenes/agentPanel.tscn" id="5_6wdav"]
-[ext_resource type="PackedScene" uid="uid://daplwaiaowq6" path="res://scenes/infoTooltip.tscn" id="7_j2c08"]
+[ext_resource type="PackedScene" path="res://scenes/infoTooltip.tscn" id="7_xl5bw"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
@@ -142,7 +142,7 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 theme_override_constants/separation = 125
 
-[node name="MarketInfoPopup" parent="." instance=ExtResource("7_j2c08")]
+[node name="MarketInfoPopup" parent="." instance=ExtResource("7_xl5bw")]
 visible = false
 
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Buy" to="." method="_on_buy_pressed"]
