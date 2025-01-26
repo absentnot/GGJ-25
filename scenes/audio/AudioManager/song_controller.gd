@@ -42,4 +42,3 @@ func _on_load_track_request(name, song_params):
 	
 func get_current_songs():
 	return $song_handler.get_current_songs()
-

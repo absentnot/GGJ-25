@@ -19,6 +19,7 @@ config/icon="res://assets/art/gretchen.png"
 
 Global="*res://scripts/Global.gd"
 AudioManager="*res://scenes/audio/AudioManager/audio_manager.tscn"
+SFXManager="*res://scenes/sfx_manager.tscn"
 
 [display]
 
