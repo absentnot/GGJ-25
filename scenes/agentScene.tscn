@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://dkn1c4ra3b6nd"]
+[gd_scene load_steps=3 format=3 uid="uid://dkn1c4ra3b6nd"]
 
-[node name="AgentScene" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/agent.gd" id="1_cbt82"]
+[ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_ghu80"]
+
+[node name="AgentScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cbt82")
+
+[node name="OrderVisualizer" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_ghu80")

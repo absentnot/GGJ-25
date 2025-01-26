@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnhtjauuofwrl"]
+[gd_scene load_steps=6 format=3 uid="uid://cnhtjauuofwrl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_joi6o"]
 [ext_resource type="Script" path="res://scripts/orderVisualizer.gd" id="2_hxlur"]
 [ext_resource type="Script" path="res://scripts/priceDisplay.gd" id="2_jefl5"]
 [ext_resource type="Texture2D" uid="uid://dqgeq3quoxin" path="res://assets/hold.png" id="2_lym6x"]
+[ext_resource type="PackedScene" uid="uid://f5lgc56hlwoh" path="res://scenes/agentPanel.tscn" id="5_6wdav"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_joi6o")
@@ -96,6 +97,14 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("2_jefl5")
+
+[node name="AgentPanel" parent="." instance=ExtResource("5_6wdav")]
+custom_minimum_size = Vector2(250, 0)
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -250.0
+grow_horizontal = 0
+size_flags_horizontal = 8
 
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="PlayerActionsHBox/PlayerActionsVBox/Sell" to="." method="_on_sell_pressed"]

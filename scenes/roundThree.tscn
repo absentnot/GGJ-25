@@ -1,25 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx6t3o22oroh"]
+[gd_scene load_steps=3 format=3 uid="uid://bx6t3o22oroh"]
 
 [ext_resource type="Script" path="res://scripts/markets/bullishCrabMarket.gd" id="1_skeiq"]
 [ext_resource type="Script" path="res://scripts/round.gd" id="1_ursny"]
-[ext_resource type="Script" path="res://scripts/agents/senatorShellstrongAgent.gd" id="2_8sk8o"]
 
 [node name="RoundThree" type="Node2D"]
 script = ExtResource("1_ursny")
+agentTypes = Array[String](["shellstrong"])
 
 [node name="BullishCrabMarket" type="Node2D" parent="." groups=["MarketGroup"]]
 script = ExtResource("1_skeiq")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 1000.0
-offset_top = 125.0
-offset_right = 1100.0
-offset_bottom = 225.0
-scale = Vector2(1.52286, 3.64)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="SenShellstrong" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-script = ExtResource("2_8sk8o")

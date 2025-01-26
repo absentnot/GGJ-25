@@ -2,12 +2,19 @@ extends Node2D
 
 
 var currentRound = null
+var maxDays
+var currDay = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	currentRound = load("res://scenes/roundFive.tscn").instantiate()
+	loadRound()
+	
+func loadRound():
+	currentRound = load("res://scenes/roundThree.tscn").instantiate()
 	currentRound.roundOver.connect(endRound)
+	maxDays = currentRound.getMaxDays()
 	add_child(currentRound)
-	$HUD.setMarketValue(currentRound.getMarketValue())
+	$HUD.setAgents(currentRound.getAgentTypes())
+	$HUD.setMarketValue(currentRound.getPrices(), maxDays - currDay)
 	$DayTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,9 +23,10 @@ func _process(delta):
 
 func _on_day_timer_timeout() -> void:
 	print("Bing! Next day")
-	var order = $HUD.getPlayerOrder()
-	currentRound.processDay(order)
-	$HUD.setMarketValue(currentRound.getMarketValue())
+	var orders = $HUD.getOrders(currentRound.getPrices(), maxDays - currDay)
+	currentRound.processDay(orders)
+	currDay+=1
+	$HUD.setMarketValue(currentRound.getPrices(), maxDays- currDay)
 	$DayTimer.start()
 
 func endRound() -> void:
