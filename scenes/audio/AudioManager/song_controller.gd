@@ -31,6 +31,7 @@ func clear():
 	$song_handler.clear()
 	
 func handle_action(action):
+	clear()
 	var action_type = null
 	for sub_action in action:
 		action_type = sub_action

@@ -8,29 +8,22 @@ func _ready() -> void:
 
 
 func _on_level1_pressed() -> void:
-	print("Button pressed")
 	get_tree().change_scene_to_file(playscene_path)
-	
-
 
 
 func _on_level2_pressed() -> void:
-	print("Button pressed")
 	get_tree().change_scene_to_file(playscene_path)
 
 
 func _on_level3_pressed() -> void:
-	print("Button pressed")
 	get_tree().change_scene_to_file(playscene_path)
 
 
 func _on_level4_pressed() -> void:
-	print("Button pressed")
 	get_tree().change_scene_to_file(playscene_path)
 
 
 func _on_level5_pressed() -> void:
-	print("Button pressed")
 	get_tree().change_scene_to_file(playscene_path)
 	
 func _on_back_pressed() -> void:
