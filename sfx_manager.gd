@@ -13,6 +13,7 @@ var sfx_paths = [
 	"res://assets/sfx/price_go_down.mp3",
 	"res://assets/sfx/price_go_up.mp3",
 	"res://assets/sfx/round_start.mp3",
+	"res://assets/bgm/game_over.mp3",
 ]
 
 func load_sfx():
@@ -56,3 +57,6 @@ func _on_confirm_hold():
 
 func _on_cash_out():
 	$SfxPlayer/cash_out.play()
+	
+func _on_bad_profit():
+	$SfxPlayer/game_over.play()

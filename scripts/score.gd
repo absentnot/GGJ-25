@@ -5,10 +5,14 @@ signal sameLevel
 @onready var totalProfit:Label = get_node("VBoxContainer/TotalProfit")
 @onready var totalSharesBought:Label = get_node("VBoxContainer/TotalSharesBought")
 @onready var crabTitleLabel:Label = get_node("VBoxContainer/CrabTitle")
+
+signal bad_profit
 #var menu = preload("res://scenes/TitleScreen.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var sfxManager = get_tree().get_root().get_node_or_null('SFXManager')
+	if sfxManager:
+		bad_profit.connect(sfxManager._on_bad_profit)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,8 +24,10 @@ func display(profit:int, sharesBought: int) -> void:
 	totalSharesBought.text = "TOTAL SHARES BOUGHT: %d" % sharesBought
 	var crabTitle
 	if(profit < 0):
+		bad_profit.emit()
 		crabTitle = "Imitation Crab"
 	elif(profit < 25):
+		bad_profit.emit()
 		crabTitle = "Shelled Simpleton"
 	elif(profit < 75):
 		crabTitle = "Sea-Rated"
