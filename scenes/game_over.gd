@@ -3,7 +3,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if !Global.gameWon:
+		$CenterContainer/VBoxContainer/RichTextLabel.text = "[wave amp=50.0 freq=2.0 connected=1][center]TOO BROKE TO CONTINUE 🦀[/center][/wave]"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,6 +1,7 @@
 extends Node
 var level: int = 0
 var gametitle: String ='Bubble Brokers' 
+var gameWon = false
 
 func getCurrentMusicContext():
 	var root = get_tree().get_root()

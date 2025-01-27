@@ -43,7 +43,11 @@ func _on_menu_pressed() -> void:
 
 
 func _on_next_round_pressed() -> void:
-	emit_signal("nextLevel")
+	if Global.isMoneyZero():
+		print("GAME FAILED")
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	else:
+		emit_signal("nextLevel")
 
 
 func _on_retry_pressed() -> void:

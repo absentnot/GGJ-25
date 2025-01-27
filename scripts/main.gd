@@ -60,6 +60,7 @@ func endRound() -> void:
 	$DayTimer.stop()
 	var stats = $HUD.getFinalStats()
 	currentRound.queue_free()
+	
 	$HUD.visible = false
 	resultScreen = load("res://scenes/score.tscn").instantiate()
 	resultScreen.nextLevel.connect(_nextLevel)
@@ -72,6 +73,8 @@ func _nextLevel() -> void:
 		Global.level += 1
 		loadRound()
 	else:
+		print("GAME WON")
+		Global.gameWon = true
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 
