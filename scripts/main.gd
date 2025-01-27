@@ -46,6 +46,7 @@ func endDay() -> void:
 	currentRound.processDay(orders)
 	currDay+=1
 	$HUD.setMarketValue(currentRound.getPrices(), maxDays- currDay)
+	$HUD.resetPlayeractions()
 	$DayTimer.start()
 	
 	if Global.isMoneyZero():
@@ -67,7 +68,7 @@ func endRound() -> void:
 	resultScreen.display(stats[0], stats[1])
 
 func _nextLevel() -> void:
-	if Global.level < 8:
+	if Global.level < 7:
 		Global.level += 1
 		loadRound()
 	else:

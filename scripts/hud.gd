@@ -50,7 +50,8 @@ func getPlayerOrder() -> Order:
 
 func reset(days:int) -> void:
 	currentShares = 0
-	currentMoney = 100
+	#currentMoney = 100
+	initialMoney = currentMoney
 	graph.reset(days)
 	_updateCashAndShares(Order.new(0))
 	
@@ -103,7 +104,7 @@ func _updateCashAndShares(nextOrder: Order) -> void:
 			currentMoney -= (orderQuantity * marketVal)
 		Order.OrderType.HOLD:
 			pass
-	playerCashDisplay.text = str(currentMoney) + " $UDS"
+	playerCashDisplay.text = str(currentMoney) + " SUDS"
 	playerSharesDisplay.text = str(currentShares) + " Shares"
 	_setOrderQuantity(0)
 	_setOrderType(Order.OrderType.HOLD)
@@ -116,6 +117,11 @@ func _process(delta: float) -> void:
 func _setOrderType(nextOrderType: Order.OrderType) -> void:
 	playerOrder = nextOrderType
 	orderVisualizer.updateOrder(nextOrderType)
+	
+func resetPlayeractions() -> void:
+	$PlayerActionsHBox/PlayerActionsVBox/Buy.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Sell.modulate = "ffffff"
+	$PlayerActionsHBox/PlayerActionsVBox/Hold.modulate = "ffffff"
 	
 func _on_sell_pressed() -> void:
 	print("Sell is pressed!")
