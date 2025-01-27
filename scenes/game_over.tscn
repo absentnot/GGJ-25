@@ -55,7 +55,7 @@ theme_override_colors/default_color = Color(0.985823, 0.794103, 0.449226, 1)
 theme_override_fonts/normal_font = ExtResource("2_uc215")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]Andrew Liu
+text = "[center]not_absent
 Matt Bowman
 Mayur Deshmukh
 Zane Fadul

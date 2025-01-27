@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfcg6a1bw8oyu"]
+[gd_scene load_steps=11 format=3 uid="uid://dfcg6a1bw8oyu"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_o1wpw"]
 [ext_resource type="PackedScene" uid="uid://b7niqv1ajes70" path="res://scenes/LevelSelect.tscn" id="2_v64ue"]
 [ext_resource type="PackedScene" uid="uid://bt0convd558f" path="res://scenes/environment.tscn" id="3_cshli"]
 [ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="4_6nnm3"]
+[ext_resource type="Material" uid="uid://duvef3kdywa2r" path="res://shaders/logo-wobble-mat.tres" id="4_283xn"]
+[ext_resource type="Texture2D" uid="uid://dxqop724u3yve" path="res://assets/art/GAME-BG-LOGO-NOBG.png" id="4_lbkf6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bser5"]
 
@@ -50,6 +52,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -58,16 +61,13 @@ layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 175)
+[node name="Logo" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+material = ExtResource("4_283xn")
+custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 8
-theme_override_fonts/font = ExtResource("4_6nnm3")
-theme_override_font_sizes/font_size = 128
-text = "Bubble Brokers"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("4_lbkf6")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
