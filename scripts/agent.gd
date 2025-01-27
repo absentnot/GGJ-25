@@ -59,7 +59,7 @@ func _gretchenDecide(prices: Array[int]) -> Order:
 func _shellstrongDecide(daysRemaining: int) -> Order:
 	print("Shellstronging! %d " % daysRemaining)
 	if daysRemaining == 0:
-		print("Shellstorng says buy!")
+		#print("Shellstorng says buy!")
 		return Order.new(10, Order.OrderType.BUY)
 	return Order.new(0)
 	

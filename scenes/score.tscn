@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/score.gd" id="1_6p3vg"]
 [ext_resource type="FontFile" uid="uid://e1l1t5u611rk" path="res://assets/Hefty Me.ttf" id="2_67woj"]
-[ext_resource type="PackedScene" uid="uid://bk1wwxoeojduc" path="res://scenes/player_crab.tscn" id="3_p1cf4"]
+[ext_resource type="PackedScene" path="res://scenes/player_crab.tscn" id="3_p1cf4"]
 
 [node name="Score" type="CanvasLayer"]
 script = ExtResource("1_6p3vg")

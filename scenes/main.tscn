@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://kw25mjyh8n23"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_l4ghx"]
-[ext_resource type="PackedScene" uid="uid://bqb3qaatjttea" path="res://scenes/RoundOne.tscn" id="2_4cbsk"]
+[ext_resource type="PackedScene" uid="uid://bqb3qaatjttea" path="res://scenes/roundOne.tscn" id="2_4cbsk"]
 [ext_resource type="PackedScene" uid="uid://bt0convd558f" path="res://scenes/environment.tscn" id="2_j6uvn"]
 [ext_resource type="PackedScene" uid="uid://cnhtjauuofwrl" path="res://scenes/hud.tscn" id="2_kbh8a"]
 [ext_resource type="PackedScene" uid="uid://dh5dwiqhbr63" path="res://scenes/tutorial.tscn" id="3_0kfub"]
@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bx6t3o22oroh" path="res://scenes/roundThree.tscn" id="4_dirjp"]
 [ext_resource type="PackedScene" uid="uid://ckph4yid4yec1" path="res://scenes/roundFour.tscn" id="5_jbefv"]
 [ext_resource type="PackedScene" uid="uid://b1ykqj16g576y" path="res://scenes/roundFive.tscn" id="6_rhuv4"]
-[ext_resource type="PackedScene" uid="uid://b361xkqgkjx48" path="res://scenes/roundSix.tscn" id="7_pb4v1"]
+[ext_resource type="PackedScene" path="res://scenes/roundSix.tscn" id="7_pb4v1"]
 [ext_resource type="PackedScene" uid="uid://dinv8lprrpcoo" path="res://scenes/roundSeven.tscn" id="8_2qxbt"]
-[ext_resource type="PackedScene" uid="uid://h5vgqrc4v3qp" path="res://scenes/roundEight.tscn" id="9_kbuvi"]
+[ext_resource type="PackedScene" path="res://scenes/roundEight.tscn" id="9_kbuvi"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_l4ghx")

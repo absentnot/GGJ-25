@@ -1,7 +1,7 @@
 extends Node
 var level: int = 0
 var gametitle: String ='Bubble Brokers' 
-var gameWon = false
+var roundNumbers: Array[String] = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven']
 
 func getCurrentMusicContext():
 	var root = get_tree().get_root()
@@ -14,19 +14,17 @@ func getCurrentMusicContext():
 	
 func getAgentsOrNot():
 	var root = get_tree().get_root()
-	var roundOne = root.get_node("Main").get_node_or_null("RoundOne") if root.get_node_or_null("Main") != null else null
-	if roundOne:
-		if len(roundOne.getAgentTypes()) > 0:
-			return true
-		else:
-			return false
+	for roundNumber in roundNumbers:
+		var round = root.get_node("Main").get_node_or_null("Round"+roundNumber) if root.get_node_or_null("Main") != null else null
+		if round:
+			return len(round.getAgentTypes()) > 0
 	return false
 
 func isMoneyZero():
 	var root = get_tree().get_root()
 	var hud =  root.get_node("Main").get_node_or_null("HUD") if root.get_node_or_null("Main") != null else null
 	if hud:
-		print(hud.getCurrentMoney() <  hud.getMarketValue())
+		#print(hud.getCurrentMoney() <  hud.getMarketValue())
 		if hud.getCurrentMoney() < hud.getMarketValue():
 			return true
 		else:
@@ -35,10 +33,8 @@ func isMoneyZero():
 
 func isLastDay():
 	var root = get_tree().get_root()
-	var roundOne = root.get_node("Main").get_node_or_null("RoundOne") if root.get_node_or_null("Main") != null else null
-	if roundOne:
-		if roundOne.isLastDay():
-			return true
-		else:
-			return false
+	for roundNumber in roundNumbers:
+		var round = root.get_node("Main").get_node_or_null("Round"+roundNumber) if root.get_node_or_null("Main") != null else null
+		if round:
+			return round.isLastDay()
 	return false
